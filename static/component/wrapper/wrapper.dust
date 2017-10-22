@@ -1,0 +1,9 @@
+<header>
+    <h1>Site Test Wrapper</h1>
+</header>
+<main>
+    <div id="content"></div>
+</main>
+<footer>
+    <p>Site Test Footer</p>
+</footer>
