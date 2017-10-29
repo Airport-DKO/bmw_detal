@@ -1,0 +1,110 @@
+header {
+    margin-top: 70px;
+    font-family: 'Proxima Nova Rg';
+}
+
+footer {
+    font-family: 'Proxima Nova Rg';
+}
+
+header h1 {
+    font-size: 26px;
+    color: #1073F8;
+    font-weight: bold;
+}
+
+header p.description {
+    font-size: 18px;
+    color: #0B0B0B;
+    font-weight: normal;
+}
+
+header p.phone {
+    font-size: 28px;
+    color: #191919;
+    font-family: 'Proxima Nova Lt';
+    font-weight: 600;
+}
+
+header p.light-text {
+    font-size: 12px;
+    color: #171616;
+}
+
+span.red-hours {
+    color: #FF0000;
+}
+
+ul.menu-round-buttons {
+    list-style: none;
+    padding: 0;
+}
+
+ul.footer-menu {
+    list-style: none;
+    padding: 0;
+}
+
+ul.footer-street {
+    list-style: none;
+    padding: 0;
+}
+
+ul.footer-street > li {
+    display: inline-block;
+    border-bottom: 1px solid rgba(16, 115, 248, .7);
+    color: #0D0D0D;
+    font-size: 18px;
+}
+
+ul.footer-menu > li {
+    display: inline-block;
+    border-bottom: 1px solid rgba(16, 115, 248, .7);
+    color: #0D0D0D;
+    font-size: 18px;
+}
+
+ul.footer-menu > li:first-child {
+    margin-right: 60px;
+}
+
+ul.footer-menu > li:last-child {
+    margin-left: 60px;
+}
+
+ul.menu-round-buttons > li {
+    display: inline-block;
+    text-align: center;
+    width: 85px;
+}
+
+div.round-button {
+    width: 55px;
+    height: 55px;
+    border: 1px solid #1073F8;
+    border-radius: 27px;
+    position: relative;
+    margin: 0 auto 4px;
+}
+
+div.round-button i.icon-menu {
+    font-size: 18px;
+    position: absolute;
+    top: 17px;
+    right: 15px;
+}
+
+div.round-button i.icon-basket {
+    font-size: 22px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+div.round-button i.icon-location {
+    font-size: 29px;
+    position: absolute;
+    top: 12px;
+    right: 17px;
+}
+

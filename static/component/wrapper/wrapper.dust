@@ -1,9 +1,65 @@
 <header>
-    <h1>Site Test Wrapper</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 offset-xl-1">
+                <h1>Поискдетали.рф</h1>
+                <p class="description">запчасти для BMW,<br> Audi, Porshe и Mercedes</p>
+            </div>
+            <div class="col-xl-4">
+                <ul class="menu-round-buttons">
+                    <li>
+                       <div class="round-button">
+                           <i class="icon-menu"></i>
+                       </div>
+                       <p class="light-text">Меню</p>
+                    </li>
+                    <li>
+                        <div class="round-button">
+                           <i class="icon-basket"></i>
+                       </div>
+                       <p class="light-text">Корзина</p>
+                    </li>
+                    <li>
+                        <div class="round-button">
+                           <i class="icon-location"></i>
+                       </div>
+                       <p class="light-text">Контакты</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xl-3">
+                <p class="phone">8 495 642 43 48</p>
+                <p class="light-text">9.00 — 20.00 / <span class="red-hours">18.00</span></p>
+            </div>
+        </div>
+    </div>
 </header>
 <main>
     <div id="content"></div>
 </main>
 <footer>
-    <p>Site Test Footer</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7 offset-xl-1">
+                <ul class="footer-menu">
+                    <li>
+                        О компании
+                    </li>
+                    <li>
+                        Гарантии и возврат
+                    </li>
+                    <li>
+                        Доставка и оплата
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xl-4">
+                <ul class="footer-street">
+                    <li>
+                        Москва, ул. Петра Романова, д.6
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </footer>
