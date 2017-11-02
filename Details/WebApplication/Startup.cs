@@ -20,7 +20,7 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString =
-                "Server=bg-mirazh.c4azroep2row.eu-west-1.rds.amazonaws.com;Port=5432;Database=details;User Id=bg; Password=nm34kd27;";
+                "Server=62.213.77.14;Port=5432;Database=details;User Id=postgres; Password=postgres;";
             services.AddTransient<IDetailRepository, DetailRepository>(provider =>
                 new DetailRepository(connectionString));
             services.AddMvc();
