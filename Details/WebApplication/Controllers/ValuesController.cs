@@ -4,6 +4,9 @@ using WebApplication.Repositories.Interfaces;
 
 namespace WebApplication.Controllers
 {
+    /// <summary>
+    /// todo nika: удалить в дальнейшем тестовый контроллер
+    /// </summary>
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {

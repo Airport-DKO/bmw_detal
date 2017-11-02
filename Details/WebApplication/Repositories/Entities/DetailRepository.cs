@@ -8,14 +8,9 @@ using WebApplication.Repositories.Interfaces;
 
 namespace WebApplication.Repositories.Entities
 {
-    public class DetailRepository : IDetailRepository
+    public class DetailRepository : BaseRepository, IDetailRepository
     {
-        private readonly string _connectionString;
-
-        public DetailRepository(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
+        public DetailRepository(string connectionString) : base(connectionString) { }
 
         public void Create(Detail detail)
         {

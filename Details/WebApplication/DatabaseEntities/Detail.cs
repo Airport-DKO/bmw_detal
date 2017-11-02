@@ -1,9 +1,15 @@
 ﻿namespace WebApplication.DatabaseEntities
 {
+    public enum DetailType
+    {
+        Origin = 0,
+        Analog
+    }
+
     public class Detail
     {
         public int InternalId { get; set; }
-        public int Type { get; set; }
+        public DetailType Type { get; set; }
         public string DetailNumber { get; set; }
         public string OriginalDetailNumber { get; set; }
         public string Name { get; set; }
