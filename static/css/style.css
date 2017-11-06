@@ -1,13 +1,15 @@
 header {
     margin-top: 70px;
+    margin-bottom: 100px;
     font-family: 'Proxima Nova Rg';
 }
 
 footer {
     font-family: 'Proxima Nova Rg';
+    margin-top: 150px;
 }
 
-header h1 {
+header h1.main-header {
     font-size: 26px;
     color: #1073F8;
     font-weight: bold;
@@ -19,11 +21,75 @@ header p.description {
     font-weight: normal;
 }
 
+@media (max-width: 767px) {
+    header h1.main-header {
+        font-size: 20px;
+        margin-top: 5px;
+    }
+    header p.description {
+        font-size: 12px;
+    }
+    header {
+        margin-bottom: 50px;
+    }
+    footer {
+        margin-top: 100px;
+    }
+}
+
 header p.phone {
     font-size: 28px;
     color: #191919;
     font-family: 'Proxima Nova Lt';
     font-weight: 600;
+}
+
+footer p.phone {
+    font-size: 28px;
+    color: #191919;
+    font-family: 'Proxima Nova Lt';
+    font-weight: 600;
+    text-align: center;
+}
+
+footer p.light-text {
+    font-size: 12px;
+    color: #171616;
+    text-align: center;
+}
+
+footer div.phone-row {
+    margin-top: 140px;
+}
+
+@media (min-width: 300px) {
+    footer div.phone-row {
+        display: none;
+    }
+}
+
+@media (min-width: 375px) {
+    footer div.phone-row {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    footer div.phone-row {
+        display: block;
+    }
+}
+
+@media (min-width: 1024px) {
+    footer div.phone-row {
+        display: none;
+    }
+}
+
+@media (min-width: 1366px) {
+    footer div.phone-row {
+        display: none;
+    }
 }
 
 header p.light-text {
@@ -65,17 +131,88 @@ ul.footer-menu > li {
 }
 
 ul.footer-menu > li:first-child {
-    margin-right: 60px;
+    margin-right: 38px;
 }
 
 ul.footer-menu > li:last-child {
-    margin-left: 60px;
+    margin-left: 38px;
 }
 
 ul.menu-round-buttons > li {
     display: inline-block;
     text-align: center;
     width: 85px;
+}
+
+@media (max-width: 767px) {
+    ul.menu-round-buttons > li.sm_DN {
+        display: none;
+    }
+    ul.menu-round-buttons > li:first-child {
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    ul.menu-round-buttons > li {
+        width: 79px;
+    }
+}
+
+.md_DN {
+    display: none;
+}
+
+@media (min-width: 375px) {
+    .md_DN {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .md_DN {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .md_DN {
+        display: block;
+    }
+}
+
+@media (min-width: 1366px) {
+    .md_DN {
+        display: block;
+    }
+}
+
+.sm_DN {
+    display: none;
+}
+
+@media (min-width: 375px) {
+    .sm_DN {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .sm_DN {
+        display: block;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sm_DN {
+        display: block;
+    }
+}
+
+@media (min-width: 1366px) {
+    .sm_DN {
+        display: block;
+    }
 }
 
 div.round-button {
@@ -101,6 +238,13 @@ div.round-button i.icon-basket {
     right: 15px;
 }
 
+div.round-button i.icon-phone {
+    font-size: 25px;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}
+
 div.round-button i.icon-location {
     font-size: 29px;
     position: absolute;
@@ -108,3 +252,49 @@ div.round-button i.icon-location {
     right: 17px;
 }
 
+div.row.main-row {
+    margin-bottom: 65px;
+}
+
+div.main-blue-button {
+    font-family: 'Proxima Nova Rg';
+    background-color: #2180FF;
+    color: #fff;
+    text-align: center;
+    font-size: 26px;
+    padding: 17px 0;
+    max-width: 490px;
+    border-radius: 45px;
+}
+
+@media (max-width: 767px) {
+    div.main-blue-button {
+        font-size: 18px;
+        padding: 12px 0;
+    }
+    div.row.main-row {
+        margin-bottom: 40px;
+    }
+}
+
+p.main-text {
+    font-size: 17px;
+    font-family: 'Proxima Nova Rg';
+    color: #000;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+p.main-text.first-main-text {
+    margin-top: 25px;
+}
+
+.mobile-buttons {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .mobile-buttons {
+        display: block;
+    }
+}

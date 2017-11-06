@@ -1,11 +1,11 @@
 <header>
     <div class="container">
         <div class="row">
-            <div class="col-xl-3 offset-xl-1">
-                <h1>Поискдетали.рф</h1>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-7 col-7">
+                <h1 class="main-header">Поискдетали.рф</h1>
                 <p class="description">запчасти для BMW,<br> Audi, Porshe и Mercedes</p>
             </div>
-            <div class="col-xl-4">
+            <div class="col-xl-5 col-lg-4 col-md-6 col-sm-5 col-5">
                 <ul class="menu-round-buttons">
                     <li>
                        <div class="round-button">
@@ -13,13 +13,13 @@
                        </div>
                        <p class="light-text">Меню</p>
                     </li>
-                    <li>
+                    <li class="sm_DN">
                         <div class="round-button">
                            <i class="icon-basket"></i>
                        </div>
                        <p class="light-text">Корзина</p>
                     </li>
-                    <li>
+                    <li class="sm_DN">
                         <div class="round-button">
                            <i class="icon-location"></i>
                        </div>
@@ -27,7 +27,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-xl-3">
+            <div class="col-xl-4 col-lg-5 md_DN">
                 <p class="phone">8 495 642 43 48</p>
                 <p class="light-text">9.00 — 20.00 / <span class="red-hours">18.00</span></p>
             </div>
@@ -39,27 +39,57 @@
 </main>
 <footer>
     <div class="container">
-        <div class="row">
-            <div class="col-xl-7 offset-xl-1">
-                <ul class="footer-menu">
-                    <li>
-                        О компании
+       <div class="row mobile-buttons">
+           <div class="col-sm-12">
+               <ul class="menu-round-buttons">
+                   <li>
+                        <div class="round-button">
+                           <i class="icon-basket"></i>
+                       </div>
+                       <p class="light-text">Корзина</p>
                     </li>
                     <li>
-                        Гарантии и возврат
+                       <div class="round-button">
+                           <i class="icon-phone"></i>
+                       </div>
+                       <p class="light-text">Позвонить</p>
                     </li>
                     <li>
-                        Доставка и оплата
+                        <div class="round-button">
+                           <i class="icon-location"></i>
+                       </div>
+                       <p class="light-text">Контакты</p>
                     </li>
                 </ul>
-            </div>
-            <div class="col-xl-4">
-                <ul class="footer-street">
-                    <li>
-                        Москва, ул. Петра Романова, д.6
-                    </li>
-                </ul>
-            </div>
-        </div>
+           </div>
+       </div>
+       <div class="row">
+           <div class="col-xl-8 col-lg-7 col-md-12 sm_DN">
+               <ul class="footer-menu">
+                   <li>
+                       О компании
+                   </li>
+                   <li>
+                       Гарантии и возврат
+                   </li>
+                   <li>
+                       Доставка и оплата
+                   </li>
+               </ul>
+           </div>
+           <div class="col-xl-4 col-lg-5 md_DN">
+               <ul class="footer-street">
+                   <li>
+                       Москва, ул. Петра Романова, д.6
+                   </li>
+               </ul>
+           </div>
+       </div>
+       <div class="row phone-row">
+           <div class="col-md-12">
+               <p class="phone">8 495 642 43 48</p>
+               <p class="light-text">9.00 — 20.00 / <span class="red-hours">18.00</span></p>
+           </div>
+       </div>
     </div>
 </footer>
