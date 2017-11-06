@@ -1,0 +1,76 @@
+1) Структура для обратной связи (при создании пользователем) (POST)//  URL: /callMeTicket
+CallMeTicketRequest 
+{
+	int (number) mobileNumber;
+	enum (string) type; // call, telegram, viber, whatsup
+}
+
+
+2)Быстрый поиск (GET)// URL: /?q=  
+QuickSearchResponse // Респонс на запрос быстрого поиска
+{
+	QuickSearchResult [] details; // если ничего нет - пустой массив []
+}
+QuickSearchResult // Объект "Результат быстрого поиска"
+{
+	string detailNumber;
+	string detailName;
+}
+
+3) Полный поиск (GET)// URL: /solid?q=
+SolidSearchResponse // Респонс за запрос полного поиска
+{
+	SolidSearchResult[] result; // пустой массив, если нет результатов
+}
+SolidSearchResult
+{
+	int (number) internalId; // наш внутренний Id
+	enum (string) type; // origin, analog
+	string detailNumber;
+	string originalDetailNumber;
+	string detailName;
+	Decimal (number) price;
+	string delivery;
+	string description;
+	int (number) quantity;
+}
+
+4) Проверка возможности заказа (POST)//  URL: /checkOrderAvailability
+CheckOrderAvailabilityRequest
+{
+	OrderItem[] items;
+	string customerName;
+	string customerSurname;
+	string customerPhone;
+	string customerAdress;
+	string customerMail;
+	string customerComment;
+	int (number) deliveryType; // договоримся о списке позже -- enum?
+}
+OrderItem 
+{
+	int (number) internalId; // наш внутренний ID
+	int (number) quantity; // количество в заказе
+}
+CheckOrderAvailabilityResponse
+{
+	int orderID; // nullable
+	OrderItem[] problemItems; // nullable
+}
+
+5) Выбор типа оплаты заказа  (POST)// URL: /selectPaymentMethod
+SelectPaymentMethodRequest
+{
+	int (number) orderId;
+	int (number) paymentType; // порядок определим потом -- enum?
+}
+SelectPaymentMethodResponse
+{
+	string linkToPayment; // nullable IFrame link
+}
+
+6) Проверка оплаты заказа (GET)//   URL: /checkPayemnt?orderId=
+OrderPaymentRespone
+{
+	int (number) status; // -- enum?
+}
