@@ -69,7 +69,7 @@
                    <li>
                        О компании
                    </li>
-                   <li>
+                   <li id="returnPolicy">
                        Гарантии и возврат
                    </li>
                    <li>
