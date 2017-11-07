@@ -31,7 +31,10 @@ $(function () {
 
     //Инициализация обработчиков обвязки
     function initWrapper() {
-        console.log("Wrapper loaded Successfully");
+        var $returnPolicy = $("#returnPolicy");
+        $returnPolicy.on("click", function() {
+            window.location.href = "#returnPolicy";
+        });
     }
 });
 
