@@ -20,7 +20,7 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString =
-                "Server=62.213.77.14;Port=5432;Database=details;User Id=postgres; Password=postgres;";
+                "Server=185.159.130.85;Port=5432;Database=details;User Id=postgres; Password=nm34kd27;";
             services.AddTransient<IBaseRepository, BaseRepository>(provider =>
                 new BaseRepository(connectionString));
             services.AddTransient<IDetailRepository, DetailRepository>(provider =>
