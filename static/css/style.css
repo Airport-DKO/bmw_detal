@@ -339,3 +339,44 @@ p.main-text.first-main-text {
         font-size: 17px;
     }
 }
+
+.agreement-text-list {
+    padding: 0;
+    list-style: none;
+    font-family: 'Proxima Nova Rg';
+    font-size: 18px;
+    color: #000;
+}
+
+.agreement-text-list li {
+    position: relative;
+    margin-bottom: 15px;
+
+}
+
+.bold-li {
+    font-weight: 600;
+}
+
+.list-numbers {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    left: -45px;
+}
+
+.agreement-dots-list {
+    font-family: 'Proxima Nova Rg';
+    font-size: 18px;
+    color: #000;
+    padding: 0;
+}
+
+@media (max-width: 767px) {
+    .agreement-dots-list {
+        font-size: 12px;
+    }
+    .agreement-text-list {
+        font-size: 12px;
+    }
+}
