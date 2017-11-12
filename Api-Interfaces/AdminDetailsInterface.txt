@@ -1,0 +1,140 @@
+0) Авторизация
+Во всех запросах ниже предусмотреть ответы 401 Unautorized, 403 Forbidden
+
+1) Получение списка заявок "Перезвони мне" (с пагинацией по 25) GET URL:/admin/CallMeTickets?page=
+Структура ответа:
+CallMeTicketsResponse
+{
+	CallMeTicket[] tickets;
+	int currentPage;
+	int totalPages;
+}
+CallMeTicket 
+{
+	int ticketId;
+	int (number) mobileNumber;
+	enum (string) type; // call, telegram, viber, whatsup
+	bool isNew; // true - новый, false - позвонили уже
+}
+
+2) Перевод заявки "Перезвони мне" в состояние "перезвонили" PUT URL:/admin/CallMeTickets/SetDone/{ticketId}
+Тело запроса пустое
+Ответ - 200 ОК или ошибка (404 не найдено), 500 - любая другая
+
+3) Удаление заявки "Перезвони мне" DELETE URL:/admin/CallMeTickets/{ticketId}
+Ответ - 200 ОК или ошибка (404 не найдено), 500 - любая другая
+
+4) Просмотр информации о конкретном товаре GET URL:/admin/details/{internalId}
+Структура ответа:
+Detail
+{
+	int (number) internalId; // наш внутренний Id
+	enum (string) type; // origin, analog
+	string detailNumber;
+	string originalDetailNumber;
+	string detailName;
+	Decimal (number) price;
+	string delivery;
+	string description;
+	int (number) quantity;
+	string provider; //информация о поставщике
+	bool isDeleted; // флажок о том, что данный товар был помечен, как удаленный
+}
+200, либо 404,500
+
+5) Редактирование информации о конкретном товаре PUT URL:/admin/details/{internalId}
+Request - отправка сущности Detail
+Response: 200, 404, 500
+
+6) Удаление конкретного товара (пометка о том, что товар удален. Физическое удаление не производится ) DELETE URL:/admin/details/{internalId}
+Response: 200, 404, 500
+
+7) Просмотр списка заказов (с пагинацией и фильтрацией по нескольким статусам) GET URL:/admin/orders?page={page_numer}&status[]={status1}&status[]={status2}
+Структура ответа:
+ShortOrdersResponse
+{
+	ShortOrder[] orders;
+	int currentPage;
+	int totalPages;
+}
+ShortOrder
+{
+	int orderID;
+	string customerName; // ФИО покупателя
+	string date;
+	string sum;
+	enum (string) orderStatus; // 
+}
+200, либо 404,500
+
+8) Просмотр конкретного заказа GET URL:/admin/orders/{orderId}
+Структура ответа:
+DetailOrderResponse
+{
+	int orderId;
+	string date;
+	string customerName;
+	string customerSurname;
+	string customerPhone;
+	string customerAdress;
+	string customerMail;
+	string customerComment;
+	int deliveryTypeId; 
+	int deliveryPrice;
+	int  paymentType;
+	enum (string) orderStatus; // Список статусов заказов согласуем с Вовой позже. 
+}
+200, либо 404,500
+
+9) Просмотр товаров конкретного заказа GET URL:/admin/orders/{orderId}/items
+Структура ответа 
+OrderItem []
+{
+	int orderItemId;
+	int (number) internalId; // наш внутренний ID
+	enum (string) type; // origin, analog
+	string detailNumber;
+	string originalDetailNumber;
+	string detailName;
+	Decimal (number) price;
+	string delivery;
+	int (number) quantity; // количество в заказе
+}
+
+10) Редактирование конкретного заказа PUT URL:/admin/orders/{orderId}
+Структура запроса 
+DetailOrderRequest
+{
+	int orderId;
+	string customerName;
+	string customerSurname;
+	string customerPhone;
+	string customerAdress;
+	string customerMail;
+	string customerComment;
+	int deliveryTypeId; 
+	int  paymentType;
+	enum (string) orderStatus; // Список статусов заказов согласуем с Вовой позже. 
+}
+
+Ответ 200, либо 404, 500
+
+11) Добавление товаров в конкретный заказ POST URL:/admin/orders/{orderId}/items
+Структура запроса 
+OrderItem 
+{
+	int (number) internalId; // наш внутренний ID
+	int (number) quantity; // количество в заказе
+}
+Ответ 200, либо 404, 500
+
+12) Редактирование товара в конкретном заказе PUT URL:/admin/orders/{orderId}/items/{orderItemId}
+Структура запроса 
+OrderItem
+{
+	int (number) quantity; // количество в заказе
+}
+Ответ 200, либо 404, 500
+
+13) Удаление товара в конкретном заказе DELETE URL:/admin/orders/{orderId}/items/{orderItemId}
+Ответ 200, либо 404, 500
