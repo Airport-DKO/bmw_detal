@@ -3,8 +3,8 @@
     /// <summary>
     /// Структура ответа для api-метода /CheckPayment?order= - Проверка оплаты конкретного заказа
     /// </summary>
-    public class OrderPaymentRespone
+    public class OrderStateResponse
     {
-        public int Status { get; set; } // think about it: enum
+        public OrderState State { get; set; }
     }
 }

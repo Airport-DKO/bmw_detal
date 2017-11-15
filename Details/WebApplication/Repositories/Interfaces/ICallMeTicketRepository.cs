@@ -4,6 +4,6 @@ namespace WebApplication.Repositories.Interfaces
 {
     public interface ICallMeTicketRepository
     {
-        void Create(CallMeTicket callMeTicket);
+        void Create(CallMeTicket request);
     }
 }

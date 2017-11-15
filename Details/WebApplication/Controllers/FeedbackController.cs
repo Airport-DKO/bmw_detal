@@ -21,11 +21,19 @@ namespace WebApplication.Controllers
         #region POST {host}/CallMeTicket - Заявка на обратную связь (перезвоните мне)
 
         [HttpPost("/CallMeTicket")]
-        public void CreateCallMeTicket([FromBody] CallMeTicket request)
+        public IActionResult CreateCallMeTicket([FromBody] CallMeTicketRequest request)
         {
             // think about it: возможно, стоит провалидировать номер телефона
-            _callMeTicketRepository.Create(request);
+            var callMeTicket = new CallMeTicket()
+            {
+                MobileNumber = request.MobileNumber,
+                Type = request.Type,
+                State = CallMeTicketState.New
+            };
+            _callMeTicketRepository.Create(callMeTicket);
             // think about it: как отправить код ответа, если будем валидировать номер телефона?
+
+            return StatusCode(200);
         }
 
         #endregion

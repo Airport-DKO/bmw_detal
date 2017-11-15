@@ -9,9 +9,9 @@
         public string CustomerName { get; set; }
         public string CustomerSurname { get; set; }
         public string CustomerPhone { get; set; }
-        public string CustomerAdress { get; set; }
+        public string CustomerAddress { get; set; }
         public string CustomerMail { get; set; }
         public string CustomerComment { get; set; }
-        public int DeliveryType { get; set; } // think about it: договоримся о списке позже -- enum?
+        public int DeliveryMethodId { get; set; }
     }
 }

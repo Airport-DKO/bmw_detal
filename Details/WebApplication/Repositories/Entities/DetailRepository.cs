@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Linq;
 using Dapper;
 using Npgsql;
-using WebApplication.DatabaseEntities;
+using WebApplication.Controllers.ControllersEntities;
 using WebApplication.Repositories.Interfaces;
 
 namespace WebApplication.Repositories.Entities
@@ -12,7 +11,32 @@ namespace WebApplication.Repositories.Entities
     {
         public DetailRepository(string connectionString) : base(connectionString) { }
 
-        public void Create(Detail detail)
+        public QuickSearchResult[] QuickSearch(string query)
+        {
+            using (IDbConnection db = new NpgsqlConnection(_connectionString))
+            {
+                query = $"%{query}%";
+                var sqlQuery = "SELECT detailnumber, name as detailName " +
+                    "FROM detail " +
+                    "WHERE detailnumber LIKE @query";
+                return db.Query<QuickSearchResult>(sqlQuery, new { query }).ToArray();
+            }
+        }
+
+        public SolidSearchResult[] SolidSearch(string query)
+        {
+            using (IDbConnection db = new NpgsqlConnection(_connectionString))
+            {
+                var sqlQuery = "SELECT internalid, type, detailnumber, originaldetailnumber, " +
+                    "name as detailname, price, deliverytime, description, stockquantity as quantity" +
+                    "FROM detail " +
+                    "WHERE detailnumber=@query";
+                return db.Query<SolidSearchResult>(sqlQuery, new { query }).ToArray();
+            }
+        }
+
+
+        /*public void Create(Detail detail)
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
@@ -64,5 +88,6 @@ namespace WebApplication.Repositories.Entities
                 db.Execute(sqlQuery, detail);
             }
         }
+    }*/
     }
 }

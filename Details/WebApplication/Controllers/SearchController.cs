@@ -21,10 +21,10 @@ namespace WebApplication.Controllers
         #region GET {host}/?q= - Быстрый поиск
 
         [HttpGet("/")]
-        public JsonResult QuickSearch(string q)
+        public IActionResult QuickSearch(string q)
         {
-            // todo nika: реализовать быстрый поиск
-            var result = new QuickSearchResponse() { Details = new QuickSearchResult[] { new QuickSearchResult() { DetailNumber = "TestNumber", DetailName = "TestName" } } };
+            var details = _detailRepository.QuickSearch(q);
+            var result = new QuickSearchResponse() { Details = details };
 
             return Json(result);
         }
@@ -33,25 +33,11 @@ namespace WebApplication.Controllers
 
         #region GET {host}/solid?q= - Полный поиск
 
-        // todo nika: реализовать полный поиск
-
         [HttpGet("/solid")]
-        public JsonResult SolidSearch(string q)
+        public IActionResult SolidSearch(string q)
         {
-            // todo nika: реализовать полный поиск
-            var result = new SolidSearchResponse()
-            {
-                Details = new SolidSearchResult[] { new SolidSearchResult() {
-                InternalId =1,
-                Type = DetailType.Analog,
-                DetailNumber = "TestNumber",
-                OriginalDetailNumber = "TestOriginalDetailNumber",
-                DetailName = "TestDetailName",
-                Price = 1000000.10m,
-                Delivery = "TestDelivery",
-                Description = "TestDescription",
-                Quantity = 8} }
-            };
+            var details = _detailRepository.SolidSearch(q);
+            var result = new SolidSearchResponse() { Details = details };
 
             return Json(result);
         }

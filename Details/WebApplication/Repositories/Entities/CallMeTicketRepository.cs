@@ -2,6 +2,8 @@
 using Npgsql;
 using WebApplication.DatabaseEntities;
 using WebApplication.Repositories.Interfaces;
+using Dapper;
+using System.Linq;
 
 namespace WebApplication.Repositories.Entities
 {
@@ -13,7 +15,23 @@ namespace WebApplication.Repositories.Entities
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
-                // todo nika: реализовать метод сохранения тикета в БД
+                // todo nika: решить проблему: enum сохраняется как int
+                var sqlQuery = "INSERT INTO callmeticket (mobilenumber, type, state) " +
+                    "VALUES(@MobileNumber, @Type, @State);";
+                db.Execute(sqlQuery, callMeTicket);
+            }
+        }
+
+        public CallMeTicket[] GetNew()
+        {
+            using (IDbConnection db = new NpgsqlConnection(_connectionString))
+            {
+                // todo nika: проверить
+                var state = CallMeTicketState.New.ToString();
+                var sqlQuery = "SELECT mobilenumber, type, state " +
+                    "FROM callmeticket" +
+                    "WHERE state=@state;";
+                return db.Query<CallMeTicket>(sqlQuery, new { state }).ToArray();
             }
         }
     }

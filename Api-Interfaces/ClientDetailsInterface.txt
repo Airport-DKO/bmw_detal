@@ -1,54 +1,81 @@
-1) Структура для обратной связи (при создании пользователем) (POST)//  URL: /callMeTicket
-CallMeTicketRequest 
+1) Структура для обратной связи (при создании пользователем) 
+(POST) /callMeTicket
+Запрос:
+/callMeTicket
 {
-	int (number) mobileNumber;
-	enum (string) type; // call, telegram, viber, whatsup
+	"mobileNumber": "+78888888888",
+	"type" : 3   // call=0, telegram, viber, whatsup
 }
+Ответ: 200 OK / HTTP ошибка
+Возможен ответ в виде ошибки в виду невалидного номера телефона - не рализовано.
+Реализовано. Можно проверить в БД в таблице callMeTicket.
 
+2)Быстрый поиск 
+(GET) /?q=    // параметр q - это строка
+Запрос: 
+/?q=3
+Ответ:
+{
+    "details": [
+        {
+            "detailNumber": "Dns4llda3",
+            "detailName": "Капот для Skoda Octavia"
+        },
+        {
+            "detailNumber": "Kjjsa3232",
+            "detailName": "Правая передняя фара для BMW 321"
+        }
+    ]
+}
+Реализовано. Можно проверить в БД по таблице details, сверка по вхождению подстроки в detailNumber.
 
-2)Быстрый поиск (GET)// URL: /?q=    (где параметр q - это строка. Поиск должен осуществляться по принципу "Вхождение подстроки q в строку по полу detailNumber")
-QuickSearchResponse // Респонс на запрос быстрого поиска
+3) Полный поиск 
+(GET) /solid?q=     // параметр q - это строка
+Запрос: 
+/solid?q=Dns4llda3
+Ответ:
 {
-	QuickSearchResult [] details; // если ничего нет - пустой массив []
+    "details": [
+        {
+            "internalId": 1,
+            "type": 1,   // original=0, analog
+            "detailNumber": "Dns4llda3",
+            "originalDetailNumber": "8384382",
+            "detailName": "Капот для Skoda Octavia",
+            "price": 1999.83,
+            "delivery": null,
+            "description": "Оригинальный, неокрашенный",
+            "quantity": 2
+        }
+    ]
 }
-QuickSearchResult // Объект "Результат быстрого поиска"
-{
-	string detailNumber;
-	string detailName;
-}
+Реализовано. Можно проверить в БД по таблице details, сверка по совпадению строки с detailNumber.
 
-3) Полный поиск (GET)// URL: /solid?q=  (где параметр q - это строка. Поиск должен осуществляться по принципу "Полное совпадение q с полем detailNumber")
-SolidSearchResponse // Респонс за запрос полного поиска
+4) Получение списка вариантов доставки 
+(GET) /getDeliveryMethods
+Запрос:
+/getDeliveryMethods
+Ответ:
 {
-	SolidSearchResult[] result; // пустой массив, если нет результатов
+    "methods": [
+        {
+            "id": 1,
+            "locationType": 0,   // moscow=0, russia
+            "deliveryType": 0,   // lightweight=0, largeweight
+            "deliveryName": "Курьером в пределах МКАД",
+            "deliveryPrice": 12656   // если 0 - доставка бесплатная, если поле отсутствует - обсуждается индивидуально
+        },
+        {
+            "id": 2,
+            "locationType": 0,
+            "deliveryType": 0,
+            "deliveryName": "Доставка за МКАД",
+            "deliveryPrice": null
+        },
+		...
+    ]
 }
-SolidSearchResult
-{
-	int (number) internalId; // наш внутренний Id
-	enum (string) type; // origin, analog
-	string detailNumber;
-	string originalDetailNumber;
-	string detailName;
-	Decimal (number) price;
-	string delivery;
-	string description;
-	int (number) quantity;
-}
-
-4) Получение списка вариантов доставки (Get) URL: /getDeliveryMethods
-GetDeliveryMethodsResponse
-{
-	DeliveryMethod[] methods;
-}
-
-DeliveryMethod
-{
-	int deliveryId; // наш внутренний ID доставки
-	enum(String) locationType; // moscow, russia
-	enum(String) deliveryType; lightweight, largeweight
-	string deliveryName; // Название доставки
-	Decimal deliveryPrice; // Стоимость, которая добавляется к заказу. Если 0 - доставка бесплатная. Если поле отсутствует - обсуждается индивидуально
-}
+Реализовано. Методы доставки описаны в БД в таблице deliveryMethods.
 
 5) Проверка возможности заказа (POST)//  URL: /checkOrderAvailability
 CheckOrderAvailabilityRequest
@@ -72,6 +99,7 @@ CheckOrderAvailabilityResponse
 	int orderID; // nullable
 	OrderItem[] problemItems; // nullable
 }
+Не реализовано.
 
 6) Выбор типа оплаты заказа  (POST)// URL: /selectPaymentMethod
 SelectPaymentMethodRequest
@@ -83,9 +111,15 @@ SelectPaymentMethodResponse
 {
 	string linkToPayment; // nullable IFrame link
 }
+Не реализовано.
 
-7) Проверка оплаты заказа (GET)//   URL: /checkPayemnt?orderId=
-OrderPaymentRespone
+7) Проверка статуса заказа (для проверки, оплачен ли заказ)
+(GET) /CheckOrderState?orderId=
+Запрос:
+/CheckOrderState?orderId=1050
+Ответ:
 {
-	int (number) status; // -- enum?
+    "state": 0
 }
+Возможен ответ 404, если заказ не найден.
+Реализовано, но не определены возможные статусы заказа.

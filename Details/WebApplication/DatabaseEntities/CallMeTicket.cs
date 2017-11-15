@@ -8,6 +8,12 @@
         WhatsUp
     }
 
+    public enum CallMeTicketState
+    {
+        New = 0,
+        Done
+    }
+
     /// <summary>
     /// Запрос "свяжитесь со мной"
     /// </summary>
@@ -15,6 +21,6 @@
     {
         public string MobileNumber { get; set; }
         public CallMeTicketType Type { get; set; }
-        // think about it: нужен статус? тогда нужно будет сделать dto для метода CallMeTicket
+        public CallMeTicketState State { get; set; }
     }
 }

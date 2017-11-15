@@ -21,10 +21,11 @@ namespace WebApplication.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            var list = _repository.GetDetails();
+            /*var list = _repository.GetDetails();
             foreach (var detail in list)
                 Debug.WriteLine(detail.DetailNumber, detail.Delivery);
-            return Json(list);
+            return Json(list);*/
+            return Json(null);
         }
 
         // GET api/values/5

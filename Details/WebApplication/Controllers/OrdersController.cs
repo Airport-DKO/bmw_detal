@@ -12,22 +12,45 @@ namespace WebApplication.Controllers
     public class OrdersController : Controller
     {
         private readonly IDetailRepository _detailRepository;
+        private readonly IOrderRepository _orderRepository;
+        private readonly IDeliveryMethodRepository _deliveryMethodRepository;
 
-        public OrdersController(IDetailRepository detailRepository)
+        public OrdersController(IDetailRepository detailRepository, IOrderRepository orderRepository, IDeliveryMethodRepository deliveryMethodRepository)
         {
             _detailRepository = detailRepository;
+            _orderRepository = orderRepository;
+            _deliveryMethodRepository = deliveryMethodRepository;
         }
 
         #region POST {host}/СheckOrderAvailability - Проверка возможности оформления заказа
 
         [HttpPost("/ChechOrderAvailability")]
-        public JsonResult ChechOrderAvailability([FromBody] CheckOrderAvailabilityRequest request)
+        public IActionResult ChechOrderAvailability([FromBody] CheckOrderAvailabilityRequest request)
         {
-            // todo nika: разобраться, почему не работает
-            // todo nika: реализовать проверку возможности оформления заказа, при этом не забыть завалидировать в целом структуру, например неотрицательное количество элементов
-            var result = new CheckOrderAvailabilityResponse() { OrderId = 1, ProblemItems = new OrderItem[] { new OrderItem() { InternalId = 1, Quantity = 10 } } };
-
-            return Json(result);
+            var newOrder = new Order()
+            {
+                Id = -1,
+                Items = request.Items,
+                CustomerName = request.CustomerName,
+                CustomerSurname = request.CustomerName,
+                CustomerPhone = request.CustomerPhone,
+                CustomerAddress = request.CustomerAddress,
+                CustomerMail = request.CustomerMail,
+                CustomerComment = request.CustomerComment,
+                DeliveryMethodId = request.DeliveryMethodId,
+                State = OrderState.New
+            };
+            try
+            {
+                var order = _orderRepository.Create(newOrder);
+                var result = new CheckOrderAvailabilityResponse() { OrderId = order.Id };
+                return Json(result);
+            }
+            catch (OrderAvailabilityException ex)
+            {
+                var result = new CheckOrderAvailabilityResponse() { ProblemItems = ex.ProblemItems };
+                return Json(result);
+            }
         }
 
         #endregion
@@ -35,9 +58,9 @@ namespace WebApplication.Controllers
         #region POST {host}/SelectPaymentMethod - Выбор типа оплаты конкретного заказа
 
         [HttpPost("/SelectPaymentMethod")]
-        public JsonResult SelectPaymentMethod([FromBody] SelectPaymentMethodRequest request)
+        public IActionResult SelectPaymentMethod([FromBody] SelectPaymentMethodRequest request)
         {
-            // todo nika: реализовать выбор типа оплаты конкретного заказа
+            // todo kirill: реализовать выбор типа оплаты конкретного заказа
             var result = new SelectPaymentMethodResponse() { LinkToPayment = "TestLinkToPayment" };
 
             return Json(result);
@@ -45,18 +68,34 @@ namespace WebApplication.Controllers
 
         #endregion
 
-        #region GET {host}/CheckPayment?order= - Проверка оплаты конкретного заказа
+        #region GET {host}/CheckOrderState?orderId= - Проверка статуса конкретного заказа
 
-        [HttpGet("/CheckPayment")]
-        public JsonResult CheckPayment(string orderId)
+        [HttpGet("/CheckOrderState")]
+        public IActionResult CheckOrderState(int orderId)
         {
-            // todo nika: реализовать проверку оплаты конкретного заказа
-            var result = new OrderPaymentRespone() { Status = 10 };
+            var state = _orderRepository.CheckState(orderId);
+            if (state != null)
+            {
+                var result = new OrderStateResponse() { State = state.Value };
+                return Json(result);
+            }
+
+            return StatusCode(404);
+        }
+
+        #endregion
+
+        #region GET {host}/GetDeliveryMethods - Получение вариантов доставки
+
+        [HttpGet("/GetDeliveryMethods")]
+        public IActionResult GetDeliveryMethods()
+        {
+            var methods =_deliveryMethodRepository.GetAll();
+            var result = new GetDeliveryMethodsResponse() { methods = methods };
 
             return Json(result);
         }
 
         #endregion
-
     }
 }
