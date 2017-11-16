@@ -17,5 +17,7 @@
         public string DeliveryTime { get; set; }
         public string Description { get; set; }
         public int StockQuantity { get; set; }
+        public string Provider { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

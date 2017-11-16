@@ -77,6 +77,10 @@
 }
 Реализовано. Методы доставки описаны в БД в таблице deliveryMethods.
 
+
+
+
+
 5) Проверка возможности заказа (POST)//  URL: /checkOrderAvailability
 CheckOrderAvailabilityRequest
 {
@@ -112,6 +116,10 @@ SelectPaymentMethodResponse
 	string linkToPayment; // nullable IFrame link
 }
 Не реализовано.
+
+
+
+
 
 7) Проверка статуса заказа (для проверки, оплачен ли заказ)
 (GET) /CheckOrderState?orderId=
