@@ -6,13 +6,14 @@ header {
 
 footer {
     font-family: 'Proxima Nova Rg';
-    margin-top: 150px;
+    margin: 150px 0 100px;
 }
 
 header h1.main-header {
     font-size: 26px;
     color: #1073F8;
     font-weight: bold;
+    cursor: pointer;
 }
 
 header p.description {
@@ -128,6 +129,7 @@ ul.footer-menu > li {
     border-bottom: 1px solid rgba(16, 115, 248, .7);
     color: #0D0D0D;
     font-size: 18px;
+    cursor: pointer;
 }
 
 ul.footer-menu > li:first-child {
@@ -222,6 +224,7 @@ div.round-button {
     border-radius: 27px;
     position: relative;
     margin: 0 auto 4px;
+    cursor: pointer;
 }
 
 div.round-button i.icon-menu {
@@ -378,5 +381,139 @@ p.main-text.first-main-text {
     }
     .agreement-text-list {
         font-size: 12px;
+    }
+}
+
+.light-upper-text {
+    color: #848484;
+    font-size: 12px;
+    font-family: 'Proxima Nova Rg';
+    margin-bottom: 0px;
+}
+
+.contacts-text {
+    color: #000;
+    font-size: 18px;
+    font-family: 'Proxima Nova Rg';
+}
+
+.contacts-small-text {
+    color: #000;
+    font-size: 12px;
+    margin: 5px 0 0 0;
+    font-family: 'Proxima Nova Rg';
+}
+
+ul.free-consultation-btn {
+    background-color: #2881F9;
+    margin: 10px 0 0;
+    padding: 15px 10px 15px 25px;
+    border-radius: 30px;
+    max-width: 300px;
+}
+
+ul.free-consultation-btn > li {
+    display: inline-block;
+    list-style: none;
+    color: #fff;
+}
+
+ul.free-consultation-btn > li:first-child {
+    margin-right: 20px;
+}
+
+.contacts-block {
+    margin: 25px 0 60px;
+}
+
+div.white-space {
+    margin: 15px 0;
+}
+
+@media (min-width: 1366px) {
+    div.white-space {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    ul.free-consultation-btn > li:last-child {
+        font-size: 12px;
+    }
+    ul.footer-street > li.contact-adress {
+        font-size: 14px;
+    }
+    p.contacts-text {
+        font-size: 16px;
+    }
+}
+
+.mobile-messenger-text {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .mobile-messenger-text {
+        display: block;
+    }
+}
+
+.messenger-ul {
+    list-style: none;
+    padding: 0;
+    display: none;
+}
+
+.messenger-ul > li {
+    margin-bottom: 5px;
+}
+
+.social-links {
+    font-size: 18px;
+}
+
+.social-links > span {
+    border-bottom: 1px solid rgba(16, 115, 248, .7);
+    color: #0D0D0D;
+}
+
+.social-links:active,
+.social-links:focus,
+.social-links:hover {
+    text-decoration: none;
+}
+
+.social-arrow {
+    font-size: 12px;
+}
+
+.yandex-link {
+    display: none;
+    margin-top: 20px;
+}
+
+.contacts-mobile-button-block {
+    display: none;
+}
+
+.free-call-btn {
+    margin: 20px 0;
+}
+
+@media (max-width: 767px) {
+    .messenger-ul {
+        display: block;
+    }
+    .social-links {
+        font-size: 16px;
+    }
+    .yandex-link {
+        display: block;
+    }
+    .contacts-block {
+        margin: 25px 0 20px;
+    }
+    .contacts-mobile-button-block {
+        display: block;
     }
 }

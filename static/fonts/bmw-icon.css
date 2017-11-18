@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'bmw-icon';
-  src:  url('bmw-icon.eot?71lyk0');
-  src:  url('bmw-icon.eot?71lyk0#iefix') format('embedded-opentype'),
-    url('bmw-icon.ttf?71lyk0') format('truetype'),
-    url('bmw-icon.woff?71lyk0') format('woff'),
-    url('bmw-icon.svg?71lyk0#bmw-icon') format('svg');
+  src:  url('bmw-icon.eot?7lpfbj');
+  src:  url('bmw-icon.eot?7lpfbj#iefix') format('embedded-opentype'),
+    url('bmw-icon.ttf?7lpfbj') format('truetype'),
+    url('bmw-icon.woff?7lpfbj') format('woff'),
+    url('bmw-icon.svg?7lpfbj#bmw-icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-arrow:before {
+  content: "\e907";
+  color: #1073f8;
+}
 .icon-back:before {
   content: "\e900";
 }

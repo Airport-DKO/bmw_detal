@@ -31,9 +31,17 @@ $(function () {
 
     //Инициализация обработчиков обвязки
     function initWrapper() {
-        var $returnPolicy = $("#returnPolicy");
+        var $returnPolicy = $("#returnPolicy"),
+            $contacts = $("#contactsButton"),
+            $logo = $("#logo");
         $returnPolicy.on("click", function() {
             window.location.href = "#returnPolicy";
+        });
+        $contacts.on("click", function() {
+            window.location.href = "#contacts";
+        });
+        $logo.on("click", function() {
+            window.location.href = "/";
         });
     }
 });
