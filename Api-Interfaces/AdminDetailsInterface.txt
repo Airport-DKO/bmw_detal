@@ -196,3 +196,12 @@ OrderItem
 13) Удаление товара в конкретном заказе DELETE URL:/admin/orders/{orderId}/items/{orderItemId}
 Ответ 200, либо 404, 500
 Не реализовано.
+
+14) Загрузка файлов на парсинг POST URL:/admin/UploadFile
+Структура запроса: content-type:multipart
+key: file
+value - загружаемый файл
+key: fileType
+value - целочисленное число, обозначающее тип прайса. Типы определим позже
+
+Ответ: 200, BadRequest, 500
