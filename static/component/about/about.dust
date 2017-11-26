@@ -13,22 +13,22 @@
            <div class="about-ul-wrapper sm_DN lg_DN">
                <ul class="cars-logo-ul">
                    <li class="cars-logo-li">
-                       <img src="../../images/porsche-logo.png">
+                       <img src="./images/porsche-logo.png">
                    </li>
                    <li class="cars-logo-li">
-                       <img src="../../images/audi-logo.png">
+                       <img src="./images/audi-logo.png">
                    </li>
                    <li class="cars-logo-li">
-                       <img src="../../images/mercedes-benz-logo.png">
+                       <img src="./images/mercedes-benz-logo.png">
                    </li>
                    <li class="cars-logo-li">
-                       <img src="../../images/bmw-logo.png">
+                       <img src="./images/bmw-logo.png">
                    </li>
                    <li class="cars-logo-li">
-                       <img src="../../images/ww-logo.png">
+                       <img src="./images/ww-logo.png">
                    </li>
                    <li class="cars-logo-li">
-                       <img src="../../images/skoda-logo.png">
+                       <img src="./images/skoda-logo.png">
                    </li>
                </ul>
            </div>
@@ -36,13 +36,13 @@
            <div class="about-ul-mobile-view">
                <ul class="cars-logo-mobile-ul">
                    <li class="cars-logo-mobile-li">
-                       <img src="../../images/porsche-logo.png">
+                       <img src="./images/porsche-logo.png">
                    </li>
                    <li class="cars-logo-mobile-li">
-                       <img src="../../images/audi-logo.png">
+                       <img src="./images/audi-logo.png">
                    </li>
                    <li class="cars-logo-mobile-li">
-                       <img src="../../images/mercedes-benz-logo.png">
+                       <img src="./images/mercedes-benz-logo.png">
                    </li>
                </ul>
            </div>
@@ -52,13 +52,13 @@
            <div class="about-ul-mobile-view">
                <ul class="cars-logo-mobile-ul">
                    <li class="cars-logo-mobile-li" style="margin-right: 50px">
-                       <img src="../../images/bmw-logo.png">
+                       <img src="./images/bmw-logo.png">
                    </li>
                    <li class="cars-logo-mobile-li">
-                       <img src="../../images/ww-logo.png" style="margin-right: 50px">
+                       <img src="./images/ww-logo.png" style="margin-right: 50px">
                    </li>
                    <li class="cars-logo-mobile-li">
-                       <img src="../../images/skoda-logo.png">
+                       <img src="./images/skoda-logo.png">
                    </li>
                </ul>
            </div>
@@ -74,22 +74,22 @@
        <div class="col-xl-4 col-lg-5 md_DN">
            <ul class="cars-logo-ul">
                <li class="cars-logo-li">
-                   <img src="../../images/porsche-logo.png">
+                   <img src="./images/porsche-logo.png">
                </li>
                <li class="cars-logo-li">
-                   <img src="../../images/audi-logo.png">
+                   <img src="./images/audi-logo.png">
                </li>
                <li class="cars-logo-li">
-                   <img src="../../images/mercedes-benz-logo.png">
+                   <img src="./images/mercedes-benz-logo.png">
                </li>
                <li class="cars-logo-li">
-                   <img src="../../images/bmw-logo.png">
+                   <img src="./images/bmw-logo.png">
                </li>
                <li class="cars-logo-li">
-                   <img src="../../images/ww-logo.png">
+                   <img src="./images/ww-logo.png">
                </li>
                <li class="cars-logo-li">
-                   <img src="../../images/skoda-logo.png">
+                   <img src="./images/skoda-logo.png">
                </li>
            </ul>
        </div>

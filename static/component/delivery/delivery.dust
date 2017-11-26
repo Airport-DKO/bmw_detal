@@ -28,10 +28,10 @@
             <p class="light-upper-text">Мы принимаем платежи <br>со следующих платежных систем:</p>
             <ul class="payment-logo-ul">
                 <li class="payment-logo">
-                    <img src="../../images/mastercard-logo.png">
+                    <img src="./images/mastercard-logo.png">
                 </li>
                 <li class="payment-logo">
-                    <img src="../../images/visa-logo.png">
+                    <img src="./images/visa-logo.png">
                 </li>
             </ul>
         </div>
