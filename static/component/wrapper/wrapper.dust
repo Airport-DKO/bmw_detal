@@ -45,8 +45,8 @@
                    <li>
                         <div class="round-button">
                            <i class="icon-basket"></i>
-                       </div>
-                       <p class="light-text">Корзина</p>
+                        </div>
+                        <p class="light-text">Корзина</p>
                     </li>
                     <li>
                        <div class="round-button">
@@ -57,8 +57,8 @@
                     <li>
                         <div class="round-button">
                            <i class="icon-location"></i>
-                       </div>
-                       <p class="light-text">Контакты</p>
+                        </div>
+                        <p class="light-text">Контакты</p>
                     </li>
                 </ul>
            </div>
@@ -67,20 +67,20 @@
            <div class="col-xl-8 col-lg-7 col-md-12 sm_DN">
                <ul class="footer-menu">
                    <li>
-                       О компании
+                       <a href="#about">О компании</a>
                    </li>
                    <li id="returnPolicy">
-                       Гарантии и возврат
+                       <a href="#returnPolicy">Гарантии и возврат</a>
                    </li>
                    <li>
-                       Доставка и оплата
+                       <a href="#delivery">Доставка и оплата</a>
                    </li>
                </ul>
            </div>
            <div class="col-xl-4 col-lg-5 md_DN">
                <ul class="footer-street">
                    <li>
-                       Москва, ул. Петра Романова, д.6
+                       <a href="#contacts">Москва, ул. Петра Романова, д.6</a>
                    </li>
                </ul>
            </div>

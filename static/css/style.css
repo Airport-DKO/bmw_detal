@@ -132,6 +132,16 @@ ul.footer-menu > li {
     cursor: pointer;
 }
 
+ul.footer-menu > li > a {
+    color: #0D0D0D;
+    text-decoration: none;
+}
+
+ul.footer-street > li > a {
+    color: #0D0D0D;
+    text-decoration: none;
+}
+
 ul.footer-menu > li:first-child {
     margin-right: 38px;
 }
@@ -158,62 +168,6 @@ ul.menu-round-buttons > li {
 @media (min-width: 768px) {
     ul.menu-round-buttons > li {
         width: 79px;
-    }
-}
-
-.md_DN {
-    display: none;
-}
-
-@media (min-width: 375px) {
-    .md_DN {
-        display: none;
-    }
-}
-
-@media (min-width: 768px) {
-    .md_DN {
-        display: none;
-    }
-}
-
-@media (min-width: 1024px) {
-    .md_DN {
-        display: block;
-    }
-}
-
-@media (min-width: 1366px) {
-    .md_DN {
-        display: block;
-    }
-}
-
-.sm_DN {
-    display: none;
-}
-
-@media (min-width: 375px) {
-    .sm_DN {
-        display: none;
-    }
-}
-
-@media (min-width: 768px) {
-    .sm_DN {
-        display: block;
-    }
-}
-
-@media (min-width: 1024px) {
-    .sm_DN {
-        display: block;
-    }
-}
-
-@media (min-width: 1366px) {
-    .sm_DN {
-        display: block;
     }
 }
 
@@ -333,10 +287,10 @@ p.main-text.first-main-text {
 
 @media (max-width: 767px) {
     .text-list {
-        font-size: 12px;
+        font-size: 11px;
     }
     .text-paragraph {
-        font-size: 12px;
+        font-size: 11px;
     }
     .sub-header {
         font-size: 17px;
@@ -517,3 +471,207 @@ div.white-space {
         display: block;
     }
 }
+
+.payment-logo {
+    margin-top: 20px;
+}
+
+.delivery-row-wrapper {
+    position: relative;
+    height: 50px;
+    margin-bottom: 30px;
+}
+
+.delivery-row {
+    position: absolute;
+    left: 0;
+}
+
+.delivery-tab {
+    border: 2px dotted transparent;
+    font-family: 'Proxima Nova Rg';
+    padding: 10px 15px;
+    color: #000;
+}
+
+a.delivery-tab:hover,
+a.delivery-tab:active,
+a.delivery-tab:focus {
+    color: #000;
+    text-decoration: none !important;
+}
+
+.delivery-tab.active {
+    border: 2px dotted #1073F8;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.delivery-bold {
+    font-family: 'Proxima Nova Rg';
+    font-size: 18px;
+    color: #000;
+    font-weight: 600;
+}
+
+@media (max-width: 767px) {
+    .delivery-bold {
+        font-size: 12px;
+    }
+}
+
+.delivery-list-numbers {
+    position: absolute;
+    display: inline-block;
+    top: 7px;
+    color: #161616;
+    left: -17px;
+    font-size: 10px;
+}
+
+.payment-logo-ul {
+    padding: 0;
+    list-style: none;
+}
+
+@media (max-width: 1024px) {
+    .payment-logo-ul li {
+        display: inline-block;
+    }
+
+    .payment-logo-ul li:last-child {
+        margin-left: 20px;
+    }
+}
+
+.greetings-test {
+    font-size: 23px;
+}
+
+@media (max-width: 767px) {
+    .greetings-test {
+        font-size: 14px;
+    }
+}
+
+.about-ul-wrapper {
+    position: relative;
+    height: 90px;
+    display: block;
+}
+
+.cars-logo-ul {
+    padding: 0;
+    list-style: none;
+}
+
+.cars-logo-ul li {
+    width: 100px;
+    display: block;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 1024px) {
+    .cars-logo-ul li {
+        display: inline-block;
+        margin-right: 8px;
+    }
+    .cars-logo-ul {
+        position: absolute;
+        width: 650px;
+        left: -85px;
+        right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .cars-logo-ul li {
+        display: inline-block;
+        margin-right: 0;
+    }
+    .cars-logo-ul {
+        position: absolute;
+        width: 650px;
+        left: -85px;
+        right: 0;
+    }
+}
+
+.about-ul-mobile-view {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .about-ul-mobile-view {
+        display: block;
+    }
+}
+
+.cars-logo-mobile-ul {
+    padding: 0;
+    list-style: none;
+}
+
+.cars-logo-mobile-ul li {
+    display: inline-block;
+}
+
+/*View Helpers*/
+.sm_DN {
+    display: none;
+}
+
+.md_DN {
+    display: none;
+}
+
+.lg_DN {
+    display: none;
+}
+
+@media (min-width: 375px) {
+    .sm_DN {
+        display: none;
+    }
+    .md_DN {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .sm_DN {
+        display: block;
+    }
+    .md_DN {
+        display: none;
+    }
+    .lg_DN {
+        display: block;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sm_DN {
+        display: block;
+    }
+    .md_DN {
+        display: block;
+    }
+    .lg_DN {
+        display: none;
+    }
+}
+
+@media (min-width: 1366px) {
+    .sm_DN {
+        display: block;
+    }
+    .md_DN {
+        display: block;
+    }
+    .lg_DN {
+        display: none;
+    }
+}
+/*End of View Helpers*/
