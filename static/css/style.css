@@ -1,11 +1,17 @@
-header {
-    margin-top: 70px;
-    margin-bottom: 100px;
+* {
     font-family: 'Proxima Nova Rg';
 }
 
+header {
+    margin-top: 70px;
+    margin-bottom: 100px;
+}
+
+h1, h2 {
+    letter-spacing: 1px;
+}
+
 footer {
-    font-family: 'Proxima Nova Rg';
     margin: 150px 0 100px;
 }
 
@@ -214,7 +220,6 @@ div.row.main-row {
 }
 
 div.main-blue-button {
-    font-family: 'Proxima Nova Rg';
     background-color: #2180FF;
     color: #fff;
     text-align: center;
@@ -222,6 +227,7 @@ div.main-blue-button {
     padding: 17px 0;
     max-width: 490px;
     border-radius: 45px;
+    cursor: pointer;
 }
 
 @media (max-width: 767px) {
@@ -236,7 +242,6 @@ div.main-blue-button {
 
 p.main-text {
     font-size: 17px;
-    font-family: 'Proxima Nova Rg';
     color: #000;
     font-weight: normal;
     margin-bottom: 0;
@@ -265,14 +270,12 @@ p.main-text.first-main-text {
 }
 
 .text-paragraph {
-    font-family: 'Proxima Nova Rg';
     font-size: 18px;
     color: #000;
 }
 
 .text-list {
     padding: 0;
-    font-family: 'Proxima Nova Rg';
     font-size: 18px;
     color: #000;
 }
@@ -300,7 +303,6 @@ p.main-text.first-main-text {
 .agreement-text-list {
     padding: 0;
     list-style: none;
-    font-family: 'Proxima Nova Rg';
     font-size: 18px;
     color: #000;
 }
@@ -323,7 +325,6 @@ p.main-text.first-main-text {
 }
 
 .agreement-dots-list {
-    font-family: 'Proxima Nova Rg';
     font-size: 18px;
     color: #000;
     padding: 0;
@@ -341,21 +342,18 @@ p.main-text.first-main-text {
 .light-upper-text {
     color: #848484;
     font-size: 12px;
-    font-family: 'Proxima Nova Rg';
     margin-bottom: 0px;
 }
 
 .contacts-text {
     color: #000;
     font-size: 18px;
-    font-family: 'Proxima Nova Rg';
 }
 
 .contacts-small-text {
     color: #000;
     font-size: 12px;
     margin: 5px 0 0 0;
-    font-family: 'Proxima Nova Rg';
 }
 
 ul.free-consultation-btn {
@@ -364,6 +362,42 @@ ul.free-consultation-btn {
     padding: 15px 10px 15px 25px;
     border-radius: 30px;
     max-width: 300px;
+}
+
+ul.call-btn {
+    background-color: transparent;
+    margin: 10px 0 0;
+    padding: 10px 10px 10px 25px;
+    border-radius: 30px;
+    width: 200px;
+    border: 1px solid #fff;
+    cursor: not-allowed;
+    margin: 0 auto;
+}
+
+ul.call-btn > li {
+    display: inline-block;
+    list-style: none;
+    color: #fff;
+}
+
+ul.call-btn > li:first-child {
+    vertical-align: top;
+    margin-top: 13px;
+    margin-right: 40px;
+}
+
+ul.call-btn.active {
+    cursor: pointer;
+    background-color: #fff;
+}
+
+ul.call-btn.active li:first-child {
+    color: #1073F8;
+}
+
+ul.call-btn.active li:last-child {
+    color: #000;
 }
 
 ul.free-consultation-btn > li {
@@ -489,7 +523,6 @@ div.white-space {
 
 .delivery-tab {
     border: 2px dotted transparent;
-    font-family: 'Proxima Nova Rg';
     padding: 10px 15px;
     color: #000;
 }
@@ -508,7 +541,6 @@ a.delivery-tab:focus {
 }
 
 .delivery-bold {
-    font-family: 'Proxima Nova Rg';
     font-size: 18px;
     color: #000;
     font-weight: 600;
@@ -615,6 +647,118 @@ a.delivery-tab:focus {
 
 .cars-logo-mobile-ul li {
     display: inline-block;
+}
+
+.call-modal {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #3489FC;
+    z-index: 10;
+}
+
+.white-header {
+    color: #fff;
+    font-size: 25px;
+    font-family: 'Proxima Nova Lt';
+    margin-bottom: 20px;
+}
+
+.white-text {
+    color: #fff;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+.white-input-label {
+    color: #fff;
+    margin-top: 5px;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+.modal-center-content {
+    text-align: center;
+    margin-top: 150px;
+    width: 100%;
+}
+
+input.white-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    color: #fff;
+    font-size: 25px;
+    padding: 0 124px 5px;
+    text-align: center;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+.checkbox {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    position: relative;
+    cursor: pointer;
+}
+
+.checkbox.active {
+    background-color: #7ED321;
+}
+
+.checkbox .checkbox-icon {
+    display: none;
+}
+
+.checkbox.active .checkbox-icon {
+    display: block;
+}
+
+.checkbox-icon {
+    position: absolute;
+    left: 4px;
+    top: 6px;
+}
+
+.white-checkbox-ul {
+    padding: 0;
+}
+
+.white-checkbox-ul li {
+    display: inline-block;
+    list-style: none;
+}
+
+.white-checkbox-ul li:first-child {
+    margin-right: 30px;
+}
+
+.white-checkbox-ul li:last-child {
+    vertical-align: middle;
+}
+
+.checkbox-label {
+    color: #fff;
+}
+
+.back-button {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    font-size: 15px;
+    width: 44px;
+    margin: 30px auto;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.back-button:hover {
+    opacity: 1;
 }
 
 /*View Helpers*/

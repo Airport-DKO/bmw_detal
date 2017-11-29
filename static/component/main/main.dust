@@ -11,12 +11,66 @@
     </div>
     <div class="row">
         <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12">
-            <div class="main-blue-button">
+            <div id="freeCallBtn" class="main-blue-button">
                 Бесплатная консультация
             </div>
         </div>
         <div class="col-xl-4 col-lg-5 md_DN">
             <p class="main-text">Менеджеры бесплатно помогут<br> подобрать лучшее решение, даже<br> если вы не знаете номер детали</p>
+        </div>
+    </div>
+</div>
+
+<div id="callModal" class="call-modal" style="display: none">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="modal-center-content">
+                   <h2 class="white-header">Бесплатная консультация</h2>
+                   <p class="white-text">Менеджеры бесплатно помогут<br>подобрать лучшее решение, даже<br>если вы не знаете номер детали</p>
+                   <input id="phoneNumber" class="white-input" type="tel">
+                   <p class="white-input-label">Введите номер телефона</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 40px">
+            <div class="col-6">
+                <ul class="white-checkbox-ul" style="text-align: right; margin-right: 28px;">
+                    <li><div data-checked="false" class="checkbox"><i class="checkbox-icon icon-done"></i></div></li>
+                    <li><p class="checkbox-label">Перезвонить мне</li>
+                </ul>
+                <ul class="white-checkbox-ul" style="text-align: right">
+                    <li><div data-checked="false" class="checkbox"><i class="checkbox-icon icon-done"></i></div></li>
+                    <li><p class="checkbox-label">Написать в WhatsApp</li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <ul class="white-checkbox-ul">
+                    <li><div data-checked="false" class="checkbox"><i class="checkbox-icon icon-done"></i></div></li>
+                    <li><p class="checkbox-label">Написать в Телеграм</li>
+                </ul>
+                <ul class="white-checkbox-ul">
+                    <li><div data-checked="false" class="checkbox"><i class="checkbox-icon icon-done"></i></div></li>
+                    <li><p class="checkbox-label">Написать в Viber</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+           <div class="col-12">
+               <ul id="callBtn" class="call-btn">
+                <li>
+                    <i class="icon-incoming-call"></i>
+                </li>
+                <li>
+                    Заказать <br>звонок
+                </li>
+            </ul>
+           </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="backBtn" class="back-button">Назад</div>
+            </div>
         </div>
     </div>
 </div>
