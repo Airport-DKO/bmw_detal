@@ -21,6 +21,9 @@ function main(template) {
             var $checkbox = $(".checkbox");
             $checkbox.unbind("click");
             $checkbox.on("click", function() {
+
+                $checkbox.not(this).attr('data-checked', 'false').removeClass("active");
+
                 $(this).toggleClass("active");
                 if ($(this).hasClass("active")) {
                     $(this).attr('data-checked', 'true');
@@ -67,8 +70,8 @@ function main(template) {
 
                 $.ajax({
                     type: "POST",
-                    url: "http://127.0.0.1:5000/api/CallMeTicket",
-                    dataType: 'jsonp',
+                    url: "/CallMeTicket",
+                    dataType: 'json',
                     data: JSON.stringify(data),
 
                 }).done(function(a) {
