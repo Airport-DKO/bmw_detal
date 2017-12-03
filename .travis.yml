@@ -4,7 +4,6 @@ mono: none
 dotnet: 2.0.2
 dist: trusty  
 addons:
-  addons:
     ssh_known_hosts: 185.159.130.85
     apt:
         packages:
