@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row main-row">
+        <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12">
+            <div class="main-blue-button">
+                Поиск по номеру детали
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-5 md_DN">
+            <p class="main-text first-main-text">Поиск по 385 000 деталей в базе</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12">
+            <div class="main-blue-button">
+                Бесплатная консультация
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-5 md_DN">
+            <p class="main-text">Менеджеры бесплатно помогут<br> подобрать лучшее решение, даже<br> если вы не знаете номер детали</p>
+        </div>
+    </div>
+</div>

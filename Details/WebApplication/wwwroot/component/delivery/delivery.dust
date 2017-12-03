@@ -1,0 +1,107 @@
+<div class="container">
+   <div class="row">
+       <div class="col-12">
+           <h2 class="sub-header">
+                Оплата и доставка
+            </h2>
+       </div>
+   </div>
+    <div class="row">
+        <div class="col-xl-8 col-lg-7">
+            <p class="text-paragraph">Способы оплаты товара:</p>
+            <ul class="text-list">
+                <li>
+                    Банковской картой <br>при оформлении заказа;
+                </li>
+                <li>
+                    Банковским переводом на счет;
+                </li>
+                <li>
+                    Наличными в офисе.
+                </li>
+            </ul>
+            <p class="text-paragraph">
+                Запчасти, которые отсутствуют в наличии, <br>заказываются по предоплате в размере<br>20% от стоимости заказа.
+            </p>
+        </div>
+        <div class="col-xl-4 col-lg-5">
+            <p class="light-upper-text">Мы принимаем платежи <br>со следующих платежных систем:</p>
+            <ul class="payment-logo-ul">
+                <li class="payment-logo">
+                    <img src="./images/mastercard-logo.png">
+                </li>
+                <li class="payment-logo">
+                    <img src="./images/visa-logo.png">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h2 class="sub-header sub-header-return">
+                Варианты доставки
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+       <div class="col-12 delivery-row-wrapper">
+            <ul class="nav delivery-row" id="myTab" role="tablist">
+            <li>
+                <a class="delivery-tab active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">По Москве</a>
+            </li>
+            <li style="margin-left: 30px;">
+                <a class="delivery-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">По России</a>
+            </li>
+        </ul>
+       </div>
+    </div>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+                <div class="col-12">
+                    <p class="delivery-bold">Стандартная доставка</p>
+                    <p class="light-upper-text">Малогабаритные детали</p>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 30px;">
+            <div class="col-xl-4 col-lg-4">
+                <ul class="agreement-text-list">
+                    <li>
+                        Самовывовозом со склада<br> по адресу: ул. Молодогвар-<br>дейская, д.61, с.17<br><span style="font-weight: 600">0 &#8381;</span><div class="delivery-list-numbers">1.</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xl-4 col-lg-3">
+                <ul class="agreement-text-list">
+                    <li>
+                        Курьером в пределах МКАД.<br><span style="font-weight: 600">12 656 &#8381;</span><div class="delivery-list-numbers">2.</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xl-4 col-lg-5">
+                <ul class="agreement-text-list">
+                    <li>
+                        Доставка за МКАД<br>Стоимость и варианты<br>обсуждаются индивидуально.<div class="delivery-list-numbers">3.</div>
+                    </li>
+                </ul>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p class="delivery-bold">Доставка <br>крупногабаритных деталей</p>
+                    <p class="light-upper-text">Кузовные запчасти, лобовые стекла и т.д.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <ul class="agreement-text-list">
+                    <li>
+                        Самовывовозом со склада<br> по адресу: ул. Молодогвар-<br>дейская, д.61, с.17<br><span style="font-weight: 600">0 &#8381;</span><div class="delivery-list-numbers">1.</div>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Контент в разработке...</div>
+    </div>
+</div>

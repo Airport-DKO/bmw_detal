@@ -1,0 +1,97 @@
+<div class="container">
+   <div class="row">
+       <div class="col-12">
+           <h2 class="sub-header">
+                О компании
+            </h2>
+       </div>
+   </div>
+   <div class="row">
+       <div class="col-xl-8 col-lg-7 col-md-12">
+           <p class="greetings-test">Приветствуем Вас в нашем интернет-<br> магазине запчастей для BMW, Audi<br> и Porshe — bmwdetal.ru</p>
+
+           <div class="about-ul-wrapper sm_DN lg_DN">
+               <ul class="cars-logo-ul">
+                   <li class="cars-logo-li">
+                       <img src="./images/porsche-logo.png">
+                   </li>
+                   <li class="cars-logo-li">
+                       <img src="./images/audi-logo.png">
+                   </li>
+                   <li class="cars-logo-li">
+                       <img src="./images/mercedes-benz-logo.png">
+                   </li>
+                   <li class="cars-logo-li">
+                       <img src="./images/bmw-logo.png">
+                   </li>
+                   <li class="cars-logo-li">
+                       <img src="./images/ww-logo.png">
+                   </li>
+                   <li class="cars-logo-li">
+                       <img src="./images/skoda-logo.png">
+                   </li>
+               </ul>
+           </div>
+
+           <div class="about-ul-mobile-view">
+               <ul class="cars-logo-mobile-ul">
+                   <li class="cars-logo-mobile-li">
+                       <img src="./images/porsche-logo.png">
+                   </li>
+                   <li class="cars-logo-mobile-li">
+                       <img src="./images/audi-logo.png">
+                   </li>
+                   <li class="cars-logo-mobile-li">
+                       <img src="./images/mercedes-benz-logo.png">
+                   </li>
+               </ul>
+           </div>
+
+           <p class="text-paragraph">Наша компания располагает широким выбором <br>оригинальных и неоригинальных запчастей и <br>аксессуаров для автомобилей  BMW, Mini, Moto, <br>а так же автомобилей VAG группы. Мы ценим Вашу <br>безопасность и комфорт и гарантируем качество <br>товара, так как работаем напрямую с надежными <br>поставщиками.</p>
+
+           <div class="about-ul-mobile-view">
+               <ul class="cars-logo-mobile-ul">
+                   <li class="cars-logo-mobile-li" style="margin-right: 50px">
+                       <img src="./images/bmw-logo.png">
+                   </li>
+                   <li class="cars-logo-mobile-li">
+                       <img src="./images/ww-logo.png" style="margin-right: 50px">
+                   </li>
+                   <li class="cars-logo-mobile-li">
+                       <img src="./images/skoda-logo.png">
+                   </li>
+               </ul>
+           </div>
+
+           <p class="text-paragraph">
+              Произвести заказ Вы можете как в режиме онлайн, <br>так и, связавшись с нашими специалистами, которые <br>при необходимости предоставят подробную <br>консультацию и ответят на интересующие вопросы. <br>Для нас важны время и удобство клиента, мы <br>располагаем оперативной доставкой по Москве и <br>ближайшему Подмосковью, которая позволит Вам <br>получить заказ в день обращения. Так же наше <br>преимущество - сотрудничество с транспортными <br>компаниями, поэтому можем отправить товар в <br>любую точку России.
+           </p>
+           <p class="text-paragraph">
+              Для нас важен каждый клиент, именно у нас Вы <br>сможете найти все необходимое для Вашего <br>автомобиля и по приемлемым ценам.
+           </p>
+           <p class="greetings-test">С Уважением и заботой о наших клиентах.</p>
+       </div>
+       <div class="col-xl-4 col-lg-5 md_DN">
+           <ul class="cars-logo-ul">
+               <li class="cars-logo-li">
+                   <img src="./images/porsche-logo.png">
+               </li>
+               <li class="cars-logo-li">
+                   <img src="./images/audi-logo.png">
+               </li>
+               <li class="cars-logo-li">
+                   <img src="./images/mercedes-benz-logo.png">
+               </li>
+               <li class="cars-logo-li">
+                   <img src="./images/bmw-logo.png">
+               </li>
+               <li class="cars-logo-li">
+                   <img src="./images/ww-logo.png">
+               </li>
+               <li class="cars-logo-li">
+                   <img src="./images/skoda-logo.png">
+               </li>
+           </ul>
+       </div>
+   </div>
+</div>

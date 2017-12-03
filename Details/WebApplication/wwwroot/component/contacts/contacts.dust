@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="sub-header">Контактная информация</h2>
+        </div>
+    </div>
+    <div class="contacts-block">
+        <div class="row">
+            <div class="col-xl-4 col-lg-5 col-md-6">
+                <p class="light-upper-text">Мы работаем для вас</p>
+                <p class="contacts-text">с 9.00 до 20.00 по будням <br>и с 9.00 до 18.00 в выходные</p>
+            </div>
+            <div class="col-xl-4 col-lg-5 col-md-6">
+                <p class="light-upper-text">Телефон</p>
+                <p class="contacts-text">7 495 642 43 48</p>
+            </div>
+            <div class="white-space col-lg-12 col-md-12"></div>
+            <div class="col-xl-4 col-lg-5 col-md-6">
+                <p class="light-upper-text sm_DN">Телеграм, вотсап, вайбер</p>
+                <p class="light-upper-text mobile-messenger-text">Мессенджеры <br>(откроется в соответствующем приложении)</p>
+                <p class="contacts-text">+7 925 917 27 61</p>
+
+                <ul class="messenger-ul">
+                    <li class="contact-adress">
+                        <a class="social-links" href=""><span>Телеграм</span><i style="margin-left: 10px;" class="icon-arrow social-arrow"></i></a>
+                    </li>
+                    <li class="contact-adress">
+                        <a class="social-links" href=""><span>WhatsApp</span><i style="margin-left: 8px;" class="icon-arrow social-arrow"></i></a>
+                    </li>
+                    <li class="contact-adress">
+                        <a class="social-links" href=""><span>Viber</span><i style="margin-left: 46px;" class="icon-arrow social-arrow"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 contacts-mobile-button-block">
+                <p class="light-upper-text">Бесплатная консультация</p>
+                <div class="main-blue-button free-call-btn">
+                    Заказать звонок
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-5 col-md-6">
+                <p class="light-upper-text">Адрес офиса и склада</p>
+                <ul class="footer-street">
+                    <li class="contact-adress">Москва, ул. Петра Романова, д.6</li>
+                </ul>
+            </div>
+            <div class="white-space col-lg-12 col-md-12"></div>
+            <div class="col-xl-4 col-lg-5 col-md-6">
+                <p class="light-upper-text">Как проехать</p>
+                <p class="contacts-small-text">Со стороны Молодогвардейкой<br>
+                улицы при движении в центр.<br>
+                При повороте, вы увидите шлагбаум.
+                </p>
+            </div>
+            <div class="col-xl-4 col-lg-5 col-md-6">
+                <ul class="free-consultation-btn sm_DN">
+                    <li>
+                        <i class="icon-incoming-call"></i>
+                    </li>
+                    <li>
+                        Бесплатная консультация
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-12 yandex-link">
+                <a class="social-links"><span>Открыть в Яндекс.Картах</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="map-block">
+    <iframe src="https://yandex.ru/map-widget/v1/-/CBaVAThO~C" width="100%" height="600" frameborder="0"></iframe>
+</div>
