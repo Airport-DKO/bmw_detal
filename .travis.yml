@@ -3,6 +3,10 @@ sudo: required
 mono: none
 dotnet: 2.0.2
 dist: trusty  
+addons:
+    apt:
+        packages:
+            - sshpass
 before_script:
   - dotnet restore ./Details/Details.sln 
 script:  
