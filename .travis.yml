@@ -13,8 +13,7 @@ before_script:
 script:  
   - dotnet build ./Details/Details.sln -c Release
   - dotnet publish ./Details/Details.sln -c Release -o ./details-output/
-  - sshpass -p $KOLOBOKSPASSWORD ssh koloboks@185.159.130.85 "sudo pkill -9 dotnet"
-  - sshpass -p $KOLOBOKSPASSWORD ssh koloboks@185.159.130.85 "pkill -9 dotnet"
+  - sshpass -p $KOLOBOKSPASSWORD ssh koloboks@185.159.130.85 "kill -9 `ps aux | grep dotnet | awk '{print $2}'`"
   - sshpass -p $KOLOBOKSPASSWORD ssh koloboks@185.159.130.85 "rm -rf /usr/details/details-output"
   - sshpass -p $KOLOBOKSPASSWORD scp -r /home/travis/build/Airport-DKO/bmw_detal/Details/WebApplication/details-output/ koloboks@185.159.130.85:/usr/details/
   - sshpass -p $KOLOBOKSPASSWORD ssh koloboks@185.159.130.85 "dotnet /usr/details/details-output/WebApplication.dll"
