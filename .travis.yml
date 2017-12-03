@@ -7,3 +7,5 @@ before_script:
   - dotnet restore ./Details/Details.sln 
 script:  
   - dotnet build ./Details/Details.sln -c Release
+  - dotnet publish ./Details/Details.sln -c Release -o ./details-output/
+  - deploy.sh
