@@ -12,8 +12,8 @@ before_script:
 script:  
   - dotnet build ./Details/Details.sln -c Release
   - dotnet publish ./Details/Details.sln -c Release -o ./details-output/
-  - sshpass -p $KOLOBOKSPASSWORD ssh -o StrictHostKeyChecking=no koloboks@185.159.130.85 'pkill -f "dotnet"'
-  - sshpass -p $KOLOBOKSPASSWORD ssh -o StrictHostKeyChecking=no koloboks@185.159.130.85 'pkill -f "dotnet"'
+  - sshpass -p $KOLOBOKSPASSWORD ssh -o StrictHostKeyChecking=no koloboks@185.159.130.85 'pkill -f dotnet'
+  - sshpass -p $KOLOBOKSPASSWORD ssh -o StrictHostKeyChecking=no koloboks@185.159.130.85 'pkill -f dotnet'
   - sshpass -p $KOLOBOKSPASSWORD ssh -o StrictHostKeyChecking=no koloboks@185.159.130.85 "rm -rf /usr/details/details-output"
   - sshpass -p $KOLOBOKSPASSWORD scp ./details-output/ koloboks@185.159.130.85:/usr/details/
   - sshpass -p $KOLOBOKSPASSWORD ssh -o StrictHostKeyChecking=no koloboks@185.159.130.85 "dotnet /usr/details/details-output/WebApplication.dll &"
