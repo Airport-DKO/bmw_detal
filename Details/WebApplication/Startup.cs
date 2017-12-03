@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.StaticFiles;
 using WebApplication.Repositories.Entities;
 using WebApplication.Repositories.Interfaces;
 
@@ -65,8 +66,18 @@ namespace WebApplication
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
+            // Set up custom content types -associating file extension to MIME type
+            var provider = new FileExtensionContentTypeProvider();
+            // Add new mappings
+            provider.Mappings[".dust"] = "text/html";
+            
+            
             app.UseAuthentication();
-
+            app.UseDefaultFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                ContentTypeProvider = provider
+            });
             app.UseMvc();
         }
     }
