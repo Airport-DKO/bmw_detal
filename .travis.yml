@@ -16,5 +16,5 @@ script:
   - sshpass -p $KOLOBOKSPASSWORD ssh koloboks@185.159.130.85 pkill -f dotnet
   - sshpass -p $KOLOBOKSPASSWORD ssh koloboks@185.159.130.85 "pkill -f dotnet"
   - sshpass -p $KOLOBOKSPASSWORD ssh koloboks@185.159.130.85 "rm -rf /usr/details/details-output"
-  - sshpass -p $KOLOBOKSPASSWORD scp ./details-output/ koloboks@185.159.130.85:/usr/details/
+  - sshpass -p $KOLOBOKSPASSWORD scp /home/travis/build/Airport-DKO/bmw_detal/Details/WebApplication/details-output/ koloboks@185.159.130.85:/usr/details/
   - sshpass -p $KOLOBOKSPASSWORD ssh koloboks@185.159.130.85 "dotnet /usr/details/details-output/WebApplication.dll &"
