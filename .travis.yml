@@ -1,0 +1,9 @@
+language: csharp  
+sudo: required  
+mono: none
+dotnet: 2.0.2
+dist: trusty  
+before_script:
+  - dotnet restore
+script:  
+  - dotnet build ./Details/Details.sln -c Release
