@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication.Controllers.ControllersEntities;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using WebApplication.Repositories.Interfaces;
-using WebApplication.DatabaseEntities;
+using WebApplication.Controllers.ControllersEntities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication.Controllers
 {
     /// <summary>
-    /// Контроллер управления обратной связью
+    /// Контроллер управления заявками "Перезвони мне"
     /// </summary>
     [Route("api/[controller]")]
     public class CallMeTicketController : Controller
@@ -21,30 +22,23 @@ namespace WebApplication.Controllers
         #region POST {host}/CallMeTicket - Создание заявки "Перезвони мне"
 
         [HttpPost("/CallMeTicket")]
-        public IActionResult CreateCallMeTicket([FromBody] CallMeTicketRequest request)
+        public IActionResult CreateCallMeTicket([FromBody] CallMeTicketCreateRequest callMeTicket)
         {
-            // think about it: возможно, стоит провалидировать номер телефона
-            var callMeTicket = new CallMeTicket()
-            {
-                MobileNumber = request.MobileNumber,
-                Type = request.Type,
-                IsNew = true
-            };
+            // think about it: возможно, стоит провалидировать номер телефона и отправить StatusCode(400), если что-то не так
+
             _callMeTicketRepository.Create(callMeTicket);
-            // think about it: как отправить код ответа, если будем валидировать номер телефона?
 
             return StatusCode(200);
         }
 
         #endregion
 
-        #region GET {host}/admin/CallMeTickets - Получение списка заявок "Перезвони мне" (с пагинацией по 25)
+        #region GET {host}/Admin/CallMeTickets - Получение списка заявок "Перезвони мне" (с пагинацией по 25)
 
-        [HttpGet("/admin/CallMeTickets")]
+        [Authorize]
+        [HttpGet("/Admin/CallMeTickets")]
         public IActionResult GetCallMeTickets(int page)
         {
-            // todo nika: предусмотреть необходимость авторизации
-
             var limit = 25;
             var skip = (page - 1) * 25;
             var tickets = _callMeTicketRepository.GetAll(skip, limit);
@@ -54,7 +48,7 @@ namespace WebApplication.Controllers
             {
                 Tickets = tickets,
                 CurrentPage = page,
-                TotalPages = ticketsCount
+                TotalPages = (int)Math.Ceiling((double)ticketsCount / limit)
             };
 
             return Json(result);
@@ -62,26 +56,24 @@ namespace WebApplication.Controllers
 
         #endregion
 
-        #region PUT {host}/admin/CallMeTickets/SetDone/{ticketId} - Перевод заявки "Перезвони мне" в состояние "перезвонили"
+        #region PUT {host}/Admin/CallMeTickets/SetDone/{ticketId} - Перевод заявки "Перезвони мне" в состояние "Перезвонили"
 
-        [HttpPut("/admin/CallMeTickets/SetDone/{ticketId}")]
+        [Authorize]
+        [HttpPut("/Admin/CallMeTickets/SetDone/{ticketId}")]
         public IActionResult SetCallMeTicketsDone(int ticketId)
         {
-            // todo nika: предусмотреть необходимость авторизации
-
             var id = _callMeTicketRepository.SetDone(ticketId);
             return id != null ? StatusCode(200) : StatusCode(404);
         }
 
         #endregion
 
-        #region DELETE {host}/admin/CallMeTickets/{ticketId} - Удаление заявки "Перезвони мне"
+        #region DELETE {host}/Admin/CallMeTickets/{ticketId} - Удаление заявки "Перезвони мне"
 
-        [HttpDelete("/admin/CallMeTickets/{ticketId}")]
+        [Authorize]
+        [HttpDelete("/Admin/CallMeTickets/{ticketId}")]
         public IActionResult DeleteCallMeTickets(int ticketId)
         {
-            // todo nika: предусмотреть необходимость авторизации
-
             var id = _callMeTicketRepository.Delete(ticketId);
             return id != null ? StatusCode(200) : StatusCode(404);
         }

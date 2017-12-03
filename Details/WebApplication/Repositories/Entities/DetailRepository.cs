@@ -1,10 +1,10 @@
 ﻿using System.Data;
 using System.Linq;
-using Dapper;
-using Npgsql;
-using WebApplication.Controllers.ControllersEntities;
 using WebApplication.DatabaseEntities;
 using WebApplication.Repositories.Interfaces;
+using WebApplication.Controllers.ControllersEntities;
+using Npgsql;
+using Dapper;
 
 namespace WebApplication.Repositories.Entities
 {
@@ -12,73 +12,95 @@ namespace WebApplication.Repositories.Entities
     {
         public DetailRepository(string connectionString) : base(connectionString) { }
 
-        public QuickSearchResult[] QuickSearch(string query)
+        /// <summary>
+        /// Быстрый поиск по частичному совпадению строки query со свойством detailnumber
+        /// </summary>
+        public QuickSearchResult[] QuickSearch(string query, bool isAdmin=false)
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
-            { // think about it: для клиентов поиск по неудаленным, для админки - поиск по всем
+            {
                 query = $"%{query}%";
-                var sqlQuery = "SELECT detailnumber, name as detailName " +
+                var sqlQuery = "SELECT detailnumber, name as detailname " +
                     "FROM detail " +
                     "WHERE detailnumber LIKE @query " +
-                    "AND isDeleted=false; ";
+                    (isAdmin ? ";" : "AND isdeleted=false; ");
                 return db.Query<QuickSearchResult>(sqlQuery, new { query }).ToArray();
             }
         }
 
-        public SolidSearchResult[] SolidSearch(string query)
+        /// <summary>
+        /// Полный поиск по частичному совпадению строки query со свойством detailnumber
+        /// </summary>
+        public SolidSearchResult[] SolidSearch(string query, bool isAdmin = false)
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
-            { // think about it: для клиентов поиск по неудаленным, для админки - поиск по всем
+            {
                 var sqlQuery = "SELECT internalid, type, detailnumber, originaldetailnumber, " +
-                    "name as detailname, price, deliverytime, description, stockquantity as quantity" +
+                    "name as detailname, price, deliverytime as deliverytimeinfo, description, stockquantity as quantity " +
                     "FROM detail " +
                     "WHERE detailnumber=@query " +
-                    "AND isDeleted = false; ";
+                    (isAdmin ? ";" : "AND isdeleted=false; ");
                 return db.Query<SolidSearchResult>(sqlQuery, new { query }).ToArray();
             }
         }
 
-        public Detail GetById(int internalId)
+        /// <summary>
+        /// Получение информации о детали по ее идентификатору
+        /// </summary>
+        public Detail GetById(int detailId)
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
-                var sqlQuery = "SELECT internalId, type, detailNumber, originalDetailNumber, name, " +
-                    "price, deliveryTime, description, stockquantity as quantity, provider, isDeleted " +
+                var sqlQuery = "SELECT internalid, type, detailnumber, originaldetailnumber, name, " +
+                    "price, deliverytime as deliverytimeinfo, description, stockquantity as quantity, provider, isdeleted " +
                     "FROM detail " +
-                    "WHERE internalId = @internalId";
-                return db.Query<Detail>(sqlQuery, new { internalId }).FirstOrDefault();
+                    "WHERE internalid = @detailid";
+                return db.Query<Detail>(sqlQuery, new { detailId }).FirstOrDefault();
             }
         }
 
+        /// <summary>
+        /// Обновление информации о детали
+        /// </summary>
         public int? Update(Detail detail)
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
                 var sqlQuery = "UPDATE detail SET " +
-                    (detail.DetailNumber != null ? "detailNumber = @detailNumber, " : string.Empty) +
-                    (detail.OriginalDetailNumber != null ? "originalDetailNumber = @originalDetailNumber, " : string.Empty) +
+                    (detail.DetailNumber != null ? "detailnumber = @detailnumber, " : string.Empty) +
+                    (detail.OriginalDetailNumber != null ? "originaldetailnumber = @originaldetailnumber, " : string.Empty) +
                     (detail.Name != null ? "name = @name, " : string.Empty) +
-                    (detail.DeliveryTime != null ? "deliveryTime = @deliveryTime, " : string.Empty) +
+                    (detail.DeliveryTimeInfo != null ? "deliverytime = @deliverytimeinfo, " : string.Empty) +
                     (detail.Description != null ? "description = @description, " : string.Empty) +
                     (detail.Provider != null ? "provider = @provider, " : string.Empty) +
                     "type = @type, " +
-                    "stockquantity = @stockquantity, " +
+                    "stockquantity = @quantity, " +
                     "price = @price, " +
-                    "isDeleted = @isDeleted " +
-                    "WHERE internalId = @internalId; " +
-                    "SELECT internalId FROM detail WHERE internalId = @internalId;";
+                    "isdeleted = @isdeleted " +
+                    "WHERE internalid = @internalid; " +
+                    "" +
+                    "SELECT internalid " +
+                    "FROM detail " +
+                    "WHERE internalid = @internalid;";
                 return db.Query<int?>(sqlQuery, detail).FirstOrDefault();
             }
         }
 
+        /// <summary>
+        /// Пометить деталь как удаленную
+        /// </summary>
         public int? MarkAsDeleted(int internalId)
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
-                var sqlQuery = "UPDATE detail SET " +
+                var sqlQuery = "UPDATE detail " +
+                    "SET " +
                     "isDeleted = true " +
                     "WHERE internalId = @internalId; " +
-                    "SELECT internalId FROM detail WHERE internalId = @internalId;";
+                    "" +
+                    "SELECT internalId " +
+                    "FROM detail " +
+                    "WHERE internalId = @internalId;";
                 return db.Query<int?>(sqlQuery, new { internalId }).FirstOrDefault();
             }
         }

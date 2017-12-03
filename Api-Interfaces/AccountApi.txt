@@ -1,0 +1,18 @@
+1) Авторизация
+POST /Login
+Запрос:
+/Login
+{
+  "login" : "detailsadmin",
+  "password" : "57GH8n7j"
+}
+Ответ:
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoicXdlcnR5IiwibmJmIjoxNTExMjk2NTkxLCJleHAiOjE1MTEyOTY2NTEsImlzcyI6Ik15QXV0aFNlcnZlciIsImF1ZCI6Ik15VXNlciJ9.S52fGMQP7OQdk--zyhaBX6RlEB_Tsz8q6wQvFL_Iz5w"
+В ответе тупо токен. Если это производит гемор на js, могу переделать на более информативный json.
+Указанная пара лог/пасс захардкожена. Уровней доступа нет.
+В запросах надо указывать RequestHeader: key="Authorization" value="Bearer " + token).
+В случае бездействия в течение 10 минут (пока что в качестве отладки) токен протухает.
+Кому интересно, вот ссыль на мануал: https://metanit.com/sharp/aspnet5/23.7.php
+
+2) Здесь должен быть роут "я забыл пароль".
+3) Здесь должен быть роут для смены пароля.

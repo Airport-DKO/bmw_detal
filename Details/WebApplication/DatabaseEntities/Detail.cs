@@ -14,9 +14,9 @@
         public string OriginalDetailNumber { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public string DeliveryTime { get; set; }
+        public string DeliveryTimeInfo { get; set; }
         public string Description { get; set; }
-        public int StockQuantity { get; set; }
+        public int Quantity { get; set; }
         public string Provider { get; set; }
         public bool IsDeleted { get; set; }
     }

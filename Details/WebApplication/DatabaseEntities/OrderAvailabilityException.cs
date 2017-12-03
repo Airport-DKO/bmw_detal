@@ -8,7 +8,7 @@ namespace WebApplication.Controllers // think about it: где располож�
     internal class OrderAvailabilityException : Exception
     {
         public OrderItem[] ProblemItems { get; set; }
-
+        
         public OrderAvailabilityException(OrderItem[] problemItems)
         {
             ProblemItems = problemItems;

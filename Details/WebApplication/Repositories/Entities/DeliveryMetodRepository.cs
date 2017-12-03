@@ -1,9 +1,9 @@
 ﻿using System.Data;
-using Npgsql;
+using System.Linq;
 using WebApplication.DatabaseEntities;
 using WebApplication.Repositories.Interfaces;
+using Npgsql;
 using Dapper;
-using System.Linq;
 
 namespace WebApplication.Repositories.Entities
 {
@@ -11,11 +11,14 @@ namespace WebApplication.Repositories.Entities
     {
         public DeliveryMethodRepository(string connectionString) : base(connectionString) { }
 
+        /// <summary>
+        /// Получение методов доставки
+        /// </summary>
         public DeliveryMethod[] GetAll()
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
-                var sqlQuery = "SELECT id, locationtype, deliverytype, name as deliveryName, price as deliveryPrice " +
+                var sqlQuery = "SELECT id, locationtype, deliverytype, name as deliveryname, price " +
                     "FROM deliverymethod;";
                 return db.Query<DeliveryMethod>(sqlQuery).ToArray();
             }

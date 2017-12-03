@@ -1,0 +1,130 @@
+Сущность Detail:
+(number) internalId - идентификатор детали,
+(number/enum) type - тип детали: Origin = 0, Analog = 1
+(string) detailNumber - номер детали,
+(string) originalDetailNumber - номер оригинальной детали,
+(string) name - название детали,
+(number/decimal) price - стоимость,
+(string) deliveryTimeInfo - время доставки,
+(string) description - описание детали,
+(number) quantity - количество в наличии,
+(string) provider - поставщик,
+(bool) isDeleted - помечена ли удаленной.
+
+1) Быстрый поиск.
+Запрос:
+GET http://localhost:5000/?q={q}
+Ответ:
+{
+    "details": [
+        {
+            "detailNumber": "Dns4llda3",
+            "detailName": "Капот для Skoda Octavia"
+        }
+    ]
+}
+200 OK 
+Если ничего не найдено, результат - пустой список.
+
+2) Полный поиск.
+Запрос:
+GET http://localhost:5000/?q={q}
+Ответ:
+{
+    "details": [
+        {
+            "internalId": 1,
+            "type": 1,
+            "detailNumber": "Dns4llda3",
+            "originalDetailNumber": "8384382",
+            "detailName": "Капот для Skoda Octavia",
+            "price": 1999.83,
+            "delivery": null,
+            "description": "Оригинальный, неокрашенный",
+            "quantity": 2
+        }
+    ]
+}
+200 OK 
+Если ничего не найдено, результат - пустой список.
+
+3) Быстрый поиск для админки (ищет в т.ч. по деталям, помеченным удаленными).
+Запрос:
+GET http://localhost:5000/Admin/?q={q}
+Ответ:
+{
+    "details": [
+        {
+            "detailNumber": "Dns4llda3",
+            "detailName": "Капот для Skoda Octavia"
+        }
+    ]
+}
+200 OK / 401 Unautorized
+Если ничего не найдено, результат - пустой список.
+
+4) Полный поиск для админки (ищет в т.ч. по деталям, помеченным удаленными).
+Запрос:
+GET http://localhost:5000/Admin/?q={q}
+Ответ:
+{
+    "details": [
+        {
+            "internalId": 1,
+            "type": 1,
+            "detailNumber": "Dns4llda3",
+            "originalDetailNumber": "8384382",
+            "detailName": "Капот для Skoda Octavia",
+            "price": 1999.83,
+            "delivery": null,
+            "description": "Оригинальный, неокрашенный",
+            "quantity": 2
+        }
+    ]
+}
+200 OK / 401 Unautorized
+Если ничего не найдено, результат - пустой список.
+
+5) Получение информации о детали.
+Запрос:
+GET http://localhost:5000/admin/details/{internalId}
+Ответ:
+{
+    "internalId": 3,
+    "type": 1,
+    "detailNumber": "Kjjsa3232_updated",
+    "originalDetailNumber": "90",
+    "name": "Правая передняя фара для BMW 321 updated",
+    "price": 34560.8,
+    "deliveryTimeInfo": "1-2 недели",
+    "description": "Китай, галоген",
+    "quantity": 56,
+    "provider": "qqq",
+    "isDeleted": false
+}
+200 OK / 404 NotFound / 401 Unautorized
+
+6) Обновление информации о детали.
+Запрос:
+PUT http://localhost:5000/admin/details/{internalId}
+{
+    "internalId": 3,
+    "type": 1,
+    "detailNumber": "Kjjsa3232_updated",
+    "originalDetailNumber": "90",
+    "name": "Правая передняя фара для BMW 321 updated",
+    "price": 34560.80,
+    "deliveryTime": "1-2 недели",
+    "description": "Китай, галоген",
+    "stockQuantity": 56,
+    "provider": "qqq",
+    "isDeleted": false
+}
+Ответ:
+200 OK / 404 NotFound / 401 Unautorized
+
+7) Удаление детали (помечаем делать удаленной)
+Запрос:
+DELETE http://localhost:5000/admin/details/{internalId}
+Ответ:
+200 OK / 404 NotFound / 401 Unautorized

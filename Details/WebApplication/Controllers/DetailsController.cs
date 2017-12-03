@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication.Controllers.ControllersEntities;
-using WebApplication.Repositories.Interfaces;
 using WebApplication.DatabaseEntities;
+using WebApplication.Repositories.Interfaces;
+using WebApplication.Controllers.ControllersEntities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication.Controllers
 {
     /// <summary>
-    /// Контроллер поиска
+    /// Контроллер управления деталями
     /// </summary>
     [Route("api/[controller]")] 
     public class DetailsController : Controller
@@ -44,14 +45,40 @@ namespace WebApplication.Controllers
 
         #endregion
 
-        #region GET {host}/admin/details/{internalId} - Просмотр информации о конкретном товаре
+        #region GET {host}/Admin/?q= - Быстрый поиск в админке
 
-        [HttpGet("/admin/details/{internalId}")]
-        public IActionResult GetDetail(int internalId)
+        [Authorize]
+        [HttpGet("/Admin/")]
+        public IActionResult QuickSearchAdmin(string q)
         {
-            // todo nika: предусмотреть необходимость авторизации
+            var details = _detailRepository.QuickSearch(q, isAdmin: true);
+            var result = new QuickSearchResponse() { Details = details };
 
-            var detail = _detailRepository.GetById(internalId);
+            return Json(result);
+        }
+
+        #endregion
+
+        #region GET {host}/Admin/solid?q= - Полный поиск в админке
+
+        [HttpGet("/Admin/solid")]
+        public IActionResult SolidSearchAdmin(string q)
+        {
+            var details = _detailRepository.SolidSearch(q, isAdmin: true);
+            var result = new SolidSearchResponse() { Details = details };
+
+            return Json(result);
+        }
+
+        #endregion
+
+        #region GET {host}/Admin/Details/{id} - Просмотр информации о конкретном товаре
+
+        [Authorize]
+        [HttpGet("/Admin/Details/{id}")]
+        public IActionResult GetDetail(int id)
+        {
+            var detail = _detailRepository.GetById(id);
             if (detail != null)
                 return Json(detail);
             else
@@ -60,37 +87,29 @@ namespace WebApplication.Controllers
 
         #endregion
 
-        #region PUT {host}/admin/details/{internalId} - Просмотр информации о конкретном товаре
+        #region PUT {host}/Admin/Details/{id} - Просмотр информации о конкретном товаре
 
-        [HttpPut("/admin/details/{internalId}")]
-        public IActionResult UpdateDetail(int internalId, [FromBody]Detail detail)
+        [Authorize]
+        [HttpPut("/Admin/Details/{id}")]
+        public IActionResult UpdateDetail(int id, [FromBody]Detail detail)
         {
-            // todo nika: предусмотреть необходимость авторизации
-
-            if (detail.InternalId!=internalId)
+            if (detail.InternalId != id)
                 return StatusCode(400);
 
-            var id = _detailRepository.Update(detail);
-            if (id != null)
-                return StatusCode(200);
-            else
-                return StatusCode(404);
+            var detailId = _detailRepository.Update(detail);
+            return detailId != null ? StatusCode(200) : StatusCode(404);
         }
 
         #endregion
 
-        #region DELETE {host}/admin/details/{internalId} - Просмотр информации о конкретном товаре
+        #region DELETE {host}/Admin/Details/{id} - Просмотр информации о конкретном товаре
 
-        [HttpDelete("/admin/details/{internalId}")]
-        public IActionResult DeleteDetail(int internalId)
+        [Authorize]
+        [HttpDelete("/Admin/Details/{id}")]
+        public IActionResult DeleteDetail(int id)
         {
-            // todo nika: предусмотреть необходимость авторизации
-            
-            var id = _detailRepository.MarkAsDeleted(internalId);
-            if (id != null)
-                return StatusCode(200);
-            else
-                return StatusCode(404);
+            var detailId = _detailRepository.MarkAsDeleted(id);
+            return detailId != null ? StatusCode(200) : StatusCode(404);
         }
 
         #endregion

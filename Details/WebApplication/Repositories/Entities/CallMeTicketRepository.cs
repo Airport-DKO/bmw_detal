@@ -1,9 +1,10 @@
 ﻿using System.Data;
-using Npgsql;
+using System.Linq;
 using WebApplication.DatabaseEntities;
 using WebApplication.Repositories.Interfaces;
+using WebApplication.Controllers.ControllersEntities;
+using Npgsql;
 using Dapper;
-using System.Linq;
 
 namespace WebApplication.Repositories.Entities
 {
@@ -11,17 +12,23 @@ namespace WebApplication.Repositories.Entities
     {
         public CallMeTicketRepository(string connectionString) : base(connectionString) { }
 
-        public void Create(CallMeTicket callMeTicket)
+        /// <summary>
+        /// Создание заявки "Перезвони мне"
+        /// </summary>
+        public void Create(CallMeTicketCreateRequest callMeTicket)
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
-                // todo nika: решить проблему: enum сохраняется как int
+                // todo nika: возможно, решить проблему: enum сохраняется как int
                 var sqlQuery = "INSERT INTO callmeticket (id, mobilenumber, type, isnew) " +
-                    "VALUES(default, @MobileNumber, @Type, @IsNew); ";
+                    "VALUES(default, @mobileNumber, @type, default); ";
                 db.Execute(sqlQuery, callMeTicket);
             }
         }
 
+        /// <summary>
+        /// Получение списка заявок "Перезвони мне"
+        /// </summary>
         public CallMeTicket[] GetAll(int offset, int limit)
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
@@ -34,7 +41,9 @@ namespace WebApplication.Repositories.Entities
             }
         }
 
-
+        /// <summary>
+        /// Получение количества заявок "Перезвони мне"
+        /// </summary>
         public int Count()
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
@@ -45,23 +54,36 @@ namespace WebApplication.Repositories.Entities
             }
         }
 
+        /// <summary>
+        /// Пометить заявку "Перезвони мне" исполненной
+        /// </summary>
         public int? SetDone(int id)
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
                 var sqlQuery = "UPDATE callmeticket " +
-                    "SET isnew=false " +
+                    "SET " +
+                    "isnew=false " +
                     "WHERE id=@id; " +
-                    "SELECT id FROM callmeticket WHERE id=@id; ";
+                    "" +
+                    "SELECT id " +
+                    "FROM callmeticket " +
+                    "WHERE id=@id; ";
                 return db.Query<int?>(sqlQuery, new { id }).FirstOrDefault();
             }
         }
 
+        /// <summary>
+        /// Удалить заявку "Перезвони мне"
+        /// </summary>
         public int? Delete(int id)
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
-                var sqlQuery = "SELECT id FROM callmeticket WHERE id=@id; " +
+                var sqlQuery = "SELECT id " +
+                    "FROM callmeticket " +
+                    "WHERE id=@id; " +
+                    "" +
                     "DELETE FROM callmeticket " +
                     "WHERE id=@id; ";
                 return db.Query<int?>(sqlQuery, new { id }).FirstOrDefault();

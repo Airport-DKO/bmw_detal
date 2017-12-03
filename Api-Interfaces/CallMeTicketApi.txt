@@ -1,0 +1,52 @@
+Сущность CallMeTicket:
+(number) id - идентификатор,
+(string) mobileNumber - номер телефона,
+(number/enum) type - тип связи: Call = 0, Telegram = 1, Viber = 2, WhatsUp = 3,
+(bool) isNew - новый или сделанный.
+
+1) Создание заявки.
+Запрос:
+POST http://localhost:5000/CallMeTicket
+{
+	"mobileNumber": "89101001010",
+	"type" : 1
+}
+Ответ:
+200 OK (400 BadRequest, если телефон неверный - пока не реализовано)
+
+2) Просмотр списка заявок (с пагинацией по 25). Требует авторизацию.
+Запрос:
+GET http://localhost:5000/Admin/CallMeTickets?page={pageNumber}
+Ответ:
+{
+    "tickets": [
+        {
+            "id": 30,
+            "mobileNumber": "89009009026",
+            "type": 0,
+            "isNew": false
+        },
+		...
+        {
+            "id": 36,
+            "mobileNumber": "89101001010",
+            "type": 1,
+            "isNew": false
+        }
+    ],
+    "currentPage": 2,
+    "totalPages": 2
+}
+200 OK / 401 Unautorized
+
+3) Перевести статус заявки в "готово". Требует авторизацию.
+Запрос:
+PUT http://localhost:5000/admin/CallMeTickets/SetDone/{ticketId}
+Ответ:
+200 OK / 404 NotFound / 401 Unautorized
+
+4) Удалить заявку. Требует авторизацию.
+Запрос:
+DELETE http://localhost:5000/admin/CallMeTickets/{ticketId}
+Ответ:
+200 OK / 404 NotFound / 401 Unautorized

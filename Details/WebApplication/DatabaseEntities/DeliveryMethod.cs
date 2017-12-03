@@ -20,7 +20,7 @@ namespace WebApplication.DatabaseEntities
         public DeliveryLocationType LocationType { get; set; }
         public DeliveryType DeliveryType { get; set; }
         public string DeliveryName { get; set; }
-        public Decimal? DeliveryPrice { get; set; } // если 0 - доставка бесплатная, если поле отсутствует - обсуждается индивидуально
+        public Decimal? Price { get; set; } // если 0 - доставка бесплатная, если поле отсутствует - обсуждается индивидуально
 
     }
 }
