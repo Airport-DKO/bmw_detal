@@ -1,5 +1,5 @@
 language: csharp  
-sudo: true  
+sudo: required  
 mono: none
 dotnet: 2.0.2
 dist: trusty  
@@ -17,4 +17,4 @@ script:
   - sudo sshpass -p $KOLOBOKSPASSWORD ssh koloboks@185.159.130.85 "sudo pkill -f dotnet"
   - sudo sshpass -p $KOLOBOKSPASSWORD ssh koloboks@185.159.130.85 "rm -rf /usr/details/details-output"
   - sudo sshpass -p $KOLOBOKSPASSWORD scp -r /home/travis/build/Airport-DKO/bmw_detal/Details/WebApplication/details-output/ koloboks@185.159.130.85:/usr/details/
-  - sudo sshpass -p $KOLOBOKSPASSWORD ssh koloboks@185.159.130.85 "dotnet /usr/details/details-output/WebApplication.dll &"
+  - sudo sshpass -p $KOLOBOKSPASSWORD ssh koloboks@185.159.130.85 "dotnet /usr/details/details-output/WebApplication.dll"
