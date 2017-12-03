@@ -19,11 +19,14 @@ namespace WebApplication.Controllers
             _detailRepository = detailRepository;
         }
 
-        #region GET {host}/?q= - Быстрый поиск
+        #region GET {host}/Quick?q= - Быстрый поиск
 
-        [HttpGet("/")]
+        [HttpGet("/Quick")]
         public IActionResult QuickSearch(string q)
         {
+            if (string.IsNullOrEmpty(q))
+                return StatusCode(400);
+
             var details = _detailRepository.QuickSearch(q);
             var result = new QuickSearchResponse() { Details = details };
 
@@ -37,6 +40,9 @@ namespace WebApplication.Controllers
         [HttpGet("/solid")]
         public IActionResult SolidSearch(string q)
         {
+            if (string.IsNullOrEmpty(q))
+                return StatusCode(400);
+
             var details = _detailRepository.SolidSearch(q);
             var result = new SolidSearchResponse() { Details = details };
 
@@ -45,12 +51,15 @@ namespace WebApplication.Controllers
 
         #endregion
 
-        #region GET {host}/Admin/?q= - Быстрый поиск в админке
+        #region GET {host}/Admin/Quick?q= - Быстрый поиск в админке
 
         [Authorize]
-        [HttpGet("/Admin/")]
+        [HttpGet("/Admin/Quick")]
         public IActionResult QuickSearchAdmin(string q)
         {
+            if (string.IsNullOrEmpty(q))
+                return StatusCode(400);
+
             var details = _detailRepository.QuickSearch(q, isAdmin: true);
             var result = new QuickSearchResponse() { Details = details };
 
@@ -64,6 +73,9 @@ namespace WebApplication.Controllers
         [HttpGet("/Admin/solid")]
         public IActionResult SolidSearchAdmin(string q)
         {
+            if (string.IsNullOrEmpty(q))
+                return StatusCode(400);
+
             var details = _detailRepository.SolidSearch(q, isAdmin: true);
             var result = new SolidSearchResponse() { Details = details };
 

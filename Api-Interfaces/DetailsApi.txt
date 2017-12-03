@@ -13,7 +13,7 @@
 
 1) Быстрый поиск.
 Запрос:
-GET http://localhost:5000/?q={q}
+GET http://localhost:5000/Quick?q={q}
 Ответ:
 {
     "details": [
@@ -28,7 +28,7 @@ GET http://localhost:5000/?q={q}
 
 2) Полный поиск.
 Запрос:
-GET http://localhost:5000/?q={q}
+GET http://localhost:5000/Solid?q={q}
 Ответ:
 {
     "details": [
@@ -50,7 +50,7 @@ GET http://localhost:5000/?q={q}
 
 3) Быстрый поиск для админки (ищет в т.ч. по деталям, помеченным удаленными).
 Запрос:
-GET http://localhost:5000/Admin/?q={q}
+GET http://localhost:5000/Admin/Quick?q={q}
 Ответ:
 {
     "details": [
@@ -65,7 +65,7 @@ GET http://localhost:5000/Admin/?q={q}
 
 4) Полный поиск для админки (ищет в т.ч. по деталям, помеченным удаленными).
 Запрос:
-GET http://localhost:5000/Admin/?q={q}
+GET http://localhost:5000/Admin/Solid?q={q}
 Ответ:
 {
     "details": [
